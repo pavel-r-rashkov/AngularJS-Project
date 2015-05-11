@@ -4,7 +4,14 @@
 angular.module('myApp', [
   'ngRoute',
   'usersModule',
-  'myApp.version'
+  'postsModule',
+  'myApp.version',
+  'commentLikesModule',
+  'commentsModule',
+  'friendsModule',
+  'postLikesModule',
+  'profilesModule',
+  'navigationModule'
 ]).config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/view1'});
 }]);
