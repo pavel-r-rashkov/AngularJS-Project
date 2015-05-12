@@ -1,8 +1,9 @@
 <div ng-controller="postController">
-    <p>{{post.author.name}}</p>
+    <p>{{post.author.username}}</p>
     <p>{{post.date}}</p>
     <p>{{post.postContent}}</p>
     <div ng-include="'components/post-likes/views/post-likes.html'"></div>
+    <div>Comments count: {{post.totalCommentsCount}}</div>
     <div ng-repeat="comment in post.comments">
         <div ng-include="'components/comments/views/comment.html'"></div>
     </div>

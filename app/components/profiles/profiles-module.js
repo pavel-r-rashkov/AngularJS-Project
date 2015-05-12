@@ -8,4 +8,8 @@ angular.module('profilesModule', [])
             templateUrl: 'components/profiles/views/edit-profile.html',
             controller: 'editProfileController'
         })
+        .when('/profile/feed', {
+            templateUrl: 'components/profiles/views/news-feed.html',
+            controller: 'newsFeedController'
+        })
     }]);
