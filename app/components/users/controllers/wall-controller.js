@@ -5,6 +5,7 @@ angular.module('usersModule')
         usersService.getWall($routeParams['username'], '', 5)
             .then(
             function(data) {
+                console.log(data['data']);
                 $scope.posts = data['data'];
             },
             function() {
