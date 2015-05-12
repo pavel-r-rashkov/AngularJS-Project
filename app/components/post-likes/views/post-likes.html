@@ -1,0 +1,5 @@
+<div ng-controller="postLikesController">
+    <p>{{post.likesCount}}</p>
+    <p ng-if="post.liked"><button>Unlike</button></p>
+    <p ng-if="!post.liked"><button>Like</button></p>
+</div>

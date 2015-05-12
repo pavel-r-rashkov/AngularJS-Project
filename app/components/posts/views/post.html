@@ -2,9 +2,7 @@
     <p>{{post.author.name}}</p>
     <p>{{post.date}}</p>
     <p>{{post.postContent}}</p>
-    <p>{{post.likesCount}}</p>
-    <p ng-if="post.liked"><button>Unlike</button></p>
-    <p ng-if="!post.liked"><button>Like</button></p>
+    <div ng-include="'components/post-likes/views/post-likes.html'"></div>
     <div ng-repeat="comment in post.comments">
         <div ng-include="'components/comments/views/comment.html'"></div>
     </div>
