@@ -59,7 +59,7 @@ angular.module('usersModule')
             searchUsersByName: function(searchTerm) {
                 return $http.get(baseUrl + '/search?searchTerm=' + searchTerm, getConfig());
             },
-            getFriendWall: function(username, startPostId, pageSize) {
+            getWall: function(username, startPostId, pageSize) {
                 return $http.get(baseUrl + '/' + username + '/wall?StartPostId=' + startPostId + '&PageSize=' + pageSize, getConfig());
             },
             getFriendsList: function(username) {

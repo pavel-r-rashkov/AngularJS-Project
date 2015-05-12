@@ -1,7 +1,11 @@
 angular.module('profilesModule', [])
     .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/profiles', {
-            templateUrl: 'components/profiles/views/view9.html',
-            controller: 'profilesController'
-        });
+        $routeProvider.when('/profile/changepassword', {
+            templateUrl: 'components/profiles/views/change-password.html',
+            controller: 'changePasswordController'
+        })
+        .when('/profile/edit', {
+            templateUrl: 'components/profiles/views/edit-profile.html',
+            controller: 'editProfileController'
+        })
     }]);

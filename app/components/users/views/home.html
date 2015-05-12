@@ -1,0 +1,36 @@
+<div>
+    <h1>Social Network</h1>
+    <div>
+        <h2>Login</h2>
+        <form novalidate class="login-form">
+            <label for="username">Username</label><br>
+            <input id="username" ng-model="user.username"/><br>
+            <label for="password">Password</label><br>
+            <input id="password" type="password" ng-model="user.password"/><br>
+            <input type="submit" value="Login" ng-click="login(user)"/>
+        </form>
+    </div>
+    <div>
+        <h2>Registration</h2>
+        <form novalidate class="registration-form">
+            <label for="usernameReg">Username</label><br>
+            <input id="usernameReg" ng-model="newUser.username"/><br>
+            <label for="passwordReg">Password</label><br>
+            <input id="passwordReg" type="password" ng-model="newUser.password"/><br>
+            <label for="passwordConfirm">Confirm password</label><br>
+            <input id="passwordConfirm" type="password" ng-model="newUser.confirmPassword"/><br>
+            <label for="name">Name</label><br>
+            <input id="name" ng-model="newUser.name"/><br>
+            <label for="email">Email</label><br>
+            <input id="email" ng-model="newUser.email"/><br>
+            <!--<label>Gender</label><br>-->
+            <!--<label for="male">Male</label>-->
+            <!--<input id="male" type="radio" name="gender" ng-model="newUser.gender" value="Male"/>-->
+            <!--<label for="female">Female</label>-->
+            <!--<input id="female" type="radio" name="gender" ng-model="newUser.gender" value="Female"/>-->
+            <!--<label for="other">Other</label>-->
+            <!--<input id="other" type="radio" name="gender" ng-model="newUser.gender" value="Other"/>-->
+            <input type="submit" value="Registration" ng-click="register(newUser)"/>
+        </form>
+    </div>
+</div>

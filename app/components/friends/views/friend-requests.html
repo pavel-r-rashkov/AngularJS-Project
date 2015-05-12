@@ -1,0 +1,8 @@
+<div ng-controller="friendRequestsController">
+    <div ng-repeat="request in requests">
+        <div>
+            {{request.user.username}} send you a friend request... <button ng-click="approveRequest(request.id)">Click</button>
+        </div>
+    </div>
+    total: {{requestsCount.count}}
+</div>

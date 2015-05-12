@@ -19,22 +19,10 @@ angular.module('profilesModule')
             getNewsFeed: function(startPostId, pageSize) {
                 return $http.get(baseUrl + '/feed?StartPostId=' + startPostId + '&PageSize=' + pageSize, getConfig());
             },
-            changePassword: function(oldPassword, newPassword, confirmPassword) {
-                var data = {
-                    oldPassword: oldPassword,
-                    newPassword: newPassword,
-                    confirmPassword: confirmPassword
-                };
+            changePassword: function(data) {
                 return $http.put(baseUrl + '/changepassword', data, getConfig());
             },
             editProfile: function(profileData) {
-                //var data = {
-                //    name:,
-                //    email: ,
-                //    profileImageData: ,
-                //    coverImageData: ,
-                //    gender:
-                //}
                 return $http.put(baseUrl, profileData, getConfig());
             }
         };

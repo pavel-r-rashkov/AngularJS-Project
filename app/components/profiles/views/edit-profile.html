@@ -1,0 +1,14 @@
+<form novalidate class="profile-edit-form">
+    <label for="name">Name</label><br>
+    <input id="name" ng-model="user.name"/><br>
+    <label for="email">Email</label><br>
+    <input id="email" ng-model="user.email"/><br>
+    <label>Gender</label><br>
+    <label for="male">Male</label>
+    <input id="male" type="radio" name="gender" ng-model="user.gender" value="Male"/>
+    <label for="female">Female</label>
+    <input id="female" type="radio" name="gender" ng-model="user.gender" value="Female"/>
+    <label for="other">Other</label>
+    <input id="other" type="radio" name="gender" ng-model="user.gender" value="Other"/>
+    <input type="submit" value="Save changes" ng-click="editProfile(user)"/>
+</form>
