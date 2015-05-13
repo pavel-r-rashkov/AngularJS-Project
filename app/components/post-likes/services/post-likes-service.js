@@ -20,10 +20,10 @@ angular.module('postLikesModule')
                 return $http.get(baseUrl + '/' + postId + '/likes/preview', getConfig());
             },
             likePost: function(postId) {
-                return $http.post(baseUrl + '/' + postId, null, getConfig());
+                return $http.post(baseUrl + '/' + postId + '/likes', null, getConfig());
             },
             unlikePost: function(postId) {
-                return $http.delete(baseUrl + '/' + postId, getConfig());
+                return $http.delete(baseUrl + '/' + postId + '/likes', getConfig());
             }
         };
 
