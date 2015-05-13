@@ -1,6 +1,8 @@
-<h1>Friends preview: </h1>
-<p>Total: {{totalCount}}</p>
-<p><a ng-href="#/{{username}}/friends">All</a></p>
-<div ng-repeat="friend in friends">
-    <p>{{friend.username}}</p>
+<div ng-controller="friendsPreviewController">
+    <h1>Friends preview: </h1>
+    <p>Total: {{totalCount}}</p>
+    <p><a ng-href="#/{{username}}/friends">All</a></p>
+    <div ng-repeat="friend in friends">
+        <p>{{friend.username}}</p>
+    </div>
 </div>
