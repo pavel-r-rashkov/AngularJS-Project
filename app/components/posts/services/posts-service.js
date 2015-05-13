@@ -16,12 +16,8 @@ angular.module('postsModule')
             getPostById: function(postId) {
                 return $http.get(baseUrl + '/' + postId, getConfig());
             },
-            addPost: function(postContent, username) { // !!! api/posts - check service url
-                var data = {
-                    postContent: postContent,
-                    username: username
-                };
-                return $http.post(baseUrl, data, getConfig());
+            addPost: function(post) { // !!! api/posts - check service url
+                return $http.post(baseUrl, post, getConfig());
             },
             editPost: function(postId, newContent) {
                 var data = {
