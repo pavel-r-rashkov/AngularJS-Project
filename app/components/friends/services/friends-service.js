@@ -29,7 +29,7 @@ angular.module('friendsModule')
                 return $http.put(baseUrl + '/me/requests/' + requestId + '?status=approved', null, getConfig());
             },
             rejectFriendRequest: function(requestId) {
-                return $http.put(baseUrl + '/me/requests' + requestId + '?status=delete', getConfig());
+                return $http.put(baseUrl + '/me/requests' + requestId + '?status=rejected', getConfig());
             },
             getFriendsList: function(username) {
                 return $http.get(baseUrl + '/users/' + username + '/friends', getConfig());
