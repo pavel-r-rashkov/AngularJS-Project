@@ -19,7 +19,8 @@ angular.module('friendsModule')
                 function(data) {
                     $scope.friends = data['data'];
                 },
-                function() {
+                function(error) {
+                    console.log(error);
                     console.log('error getting friends list');
                 });
         }

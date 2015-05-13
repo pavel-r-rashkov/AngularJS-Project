@@ -1,30 +1,28 @@
 'use strict';
 
 angular.module('friendsModule')
-    .controller('friendsPreviewController', ['$scope', 'friendsService', '$routeParams', function($scope, friendsService, $routeParams) {
-        var username = $routeParams['user'];
+    .controller('friendsPreviewController', ['$scope', 'friendsService', function($scope, friendsService) {
+        var username = $scope.username;
 
-        if(username === 'me') {
-            friendsService.getFriends()
+        if(username === localStorage['username']) {
+            friendsService.getMyFriendsPreview()   //   CHANGE to preview friends
                 .then(
                 function(data) {
                     $scope.totalCount = data['data']['totalCount'];
-                    $scope.username = localStorage['username'];
                     $scope.friends = data['data'];
                 },
                 function() {
-                    console.log('error getting friends list');
+                    console.log('error getting friends preview');
                 });
         } else {
             friendsService.getFriendsPreview(username)
                 .then(
                 function(data) {
                     $scope.totalCount = data['data']['totalCount'];
-                    $scope.username = localStorage['username'];
                     $scope.friends = data['data']['friends'];
                 },
                 function() {
-                    console.log('error getting friends list');
+                    console.log('error getting friends preview');
                 });
         }
 

@@ -16,6 +16,9 @@ angular.module('friendsModule')
             getFriends: function() {
                 return $http.get(baseUrl + '/me/friends', getConfig());
             },
+            getMyFriendsPreview: function() {
+                return $http.get(baseUrl + '/me/friends/preview', getConfig());
+            },
             getFriendRequests: function() {
                 return $http.get(baseUrl + '/me/requests', getConfig());
             },

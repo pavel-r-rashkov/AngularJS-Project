@@ -1,7 +1,8 @@
-<h2>User wall</h2>
+<h2>User wall {{username}}</h2>
 <div>profile information</div>
 <div ng-repeat="post in posts">
     <div ng-include="'components/posts/views/post.html'"></div>
 </div>
 <div>create post</div>
 <div>friends preview</div>
+<div ng-include="'components/friends/views/friends-preview.html'"></div>

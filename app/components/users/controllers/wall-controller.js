@@ -2,6 +2,8 @@
 
 angular.module('usersModule')
     .controller('wallController', ['$scope', 'usersService', '$routeParams', '$location', function($scope, usersService, $routeParams, $location) {
+        $scope.username = $routeParams['username'];
+
         usersService.getWall($routeParams['username'], '', 5)
             .then(
             function(data) {
