@@ -61,12 +61,6 @@ angular.module('usersModule')
             },
             getWall: function(username, startPostId, pageSize) {
                 return $http.get(baseUrl + '/' + username + '/wall?StartPostId=' + startPostId + '&PageSize=' + pageSize, getConfig());
-            },
-            getFriendsList: function(username) {
-                return $http.get(baseUrl + '/' + username + '/friends', getConfig());
-            },
-            getFriendsPreview: function(username) {
-                return $http.get(baseUrl + '/' + username + '/friends/preview', getConfig());
             }
         };
 

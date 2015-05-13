@@ -10,24 +10,29 @@ angular.module('friendsModule')
             return config;
         };
 
-        var baseUrl = 'http://softuni-social-network.azurewebsites.net/api/me';
+        var baseUrl = 'http://softuni-social-network.azurewebsites.net/api';
 
         var friendsRepo = {
             getFriends: function() {
-                return $http.get(baseUrl + '/friends', getConfig());
+                return $http.get(baseUrl + '/me/friends', getConfig());
             },
             getFriendRequests: function() {
-                return $http.get(baseUrl + '/requests', getConfig());
+                return $http.get(baseUrl + '/me/requests', getConfig());
             },
             sendFriendRequest: function(username) {
-                return $http.post(baseUrl + '/requests/' + username, null, getConfig());
+                return $http.post(baseUrl + '/me/requests/' + username, null, getConfig());
             },
             approveFriendRequest: function(requestId) {
-                console.log(baseUrl + '/requests/' + requestId + '?status=approved');
-                return $http.put(baseUrl + '/requests/' + requestId + '?status=approved', null, getConfig());
+                return $http.put(baseUrl + '/me/requests/' + requestId + '?status=approved', null, getConfig());
             },
             rejectFriendRequest: function(requestId) {
-                return $http.put(baseUrl + '/requests' + requestId + '?status=delete', getConfig());
+                return $http.put(baseUrl + '/me/requests' + requestId + '?status=delete', getConfig());
+            },
+            getFriendsList: function(username) {
+                return $http.get(baseUrl + '/users/' + username + '/friends', getConfig());
+            },
+            getFriendsPreview: function(username) {
+                return $http.get(baseUrl + '/users/' + username + '/friends/preview', getConfig());
             }
         };
 
