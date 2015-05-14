@@ -5,7 +5,7 @@ angular.module('friendsModule')
         var username = $scope.username;
 
         if(username === localStorage['username']) {
-            friendsService.getMyFriendsPreview()   //   CHANGE to preview friends
+            friendsService.getMyFriendsPreview()
                 .then(
                 function(data) {
                     $scope.totalCount = data['data']['totalCount'];

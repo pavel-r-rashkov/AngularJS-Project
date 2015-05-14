@@ -8,7 +8,7 @@ angular.module('postsModule')
             }
 
             return config;
-        };
+        }
 
         var baseUrl = 'http://softuni-social-network.azurewebsites.net/api/Posts';
 

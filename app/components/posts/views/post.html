@@ -1,10 +1,21 @@
-<div ng-controller="postController">
+<div>
     <p>{{post.author.username}}</p>
     <p>{{post.date}}</p>
     <p>{{post.postContent}}</p>
     <div ng-include="'components/post-likes/views/post-likes.html'"></div>
+    <button ng-click="deletePost(post.id)">Delete</button>
+    <button ng-click="toggleCommentForm()">
+        <span ng-if="showForm">Hide form</span>
+        <span ng-if="!showForm">Add comment</span>
+    </button>
+    <div ng-if="showForm">
+        <div new-comment post-id="post.id" append-comment="appendComment(newComment)"></div>
+    </div>
+
     <div>Comments count: {{post.totalCommentsCount}}</div>
     <div ng-repeat="comment in post.comments">
-        <div ng-include="'components/comments/views/comment.html'"></div>
+        <!--<div ng-include="'components/comments/views/comment.html'"></div>-->
+        <div show-comment comment="comment"></div>
     </div>
 </div>
+<hr>
