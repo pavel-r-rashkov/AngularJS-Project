@@ -1,5 +1,11 @@
 <h2>User wall {{username}}</h2>
-<div>profile information</div>
+<div>
+    <p>{{userFullData.name}}</p>
+    <p>{{userFullData.username}}</p>
+    <p>{{userFullData.gender}}</p>
+</div>
+<hr>
+<hr>
 <div ng-repeat="post in posts">
     <div show-post posts-update="showPosts()" post="post"></div>
 </div>
