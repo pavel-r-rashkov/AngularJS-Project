@@ -24,7 +24,6 @@ angular.module('navigationModule', [])
         });
 
         function getRequests() {
-            console.log('getting requests');
             friendsService.getFriendRequests()
                 .then(
                 function(data) {
