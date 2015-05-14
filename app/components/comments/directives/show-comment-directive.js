@@ -7,6 +7,8 @@ angular.module('commentsModule').directive('showComment', function () {
         },
         templateUrl: 'components/comments/views/comment.html',
         controller: function ($scope, $element, $attrs, commentsService) {
+            $scope.userPreviewActive = false;
+
             $scope.deleteComment = function(postId, commentId) {
                 commentsService.deleteComment(postId, commentId)
                     .then(
@@ -17,6 +19,10 @@ angular.module('commentsModule').directive('showComment', function () {
                         console.log('error deleting comment');
                     });
             };
+
+            $scope.toggleUserPreview = function() {
+                $scope.userPreviewActive = !$scope.userPreviewActive;
+            }
         }
     };
 });

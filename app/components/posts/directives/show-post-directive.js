@@ -18,6 +18,7 @@ angular.module('postsModule').directive('showPost', function () {
             };
 
             $scope.showForm = false;
+            $scope.userPreviewActive = false;
 
             $scope.toggleCommentForm = function() {
                 $scope.showForm = !$scope.showForm;
@@ -31,6 +32,10 @@ angular.module('postsModule').directive('showPost', function () {
             $scope.removeComment = function(commentId) {
                 $scope.post.totalCommentsCount -= 1;
                 $scope.post.comments = $scope.post.comments.filter(function(element) {return element.id != commentId;});
+            }
+
+            $scope.toggleUserPreview = function() {
+                $scope.userPreviewActive = !$scope.userPreviewActive;
             }
 
         }

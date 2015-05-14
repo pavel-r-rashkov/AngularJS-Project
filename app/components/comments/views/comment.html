@@ -1,5 +1,6 @@
 <div>
-    <p>{{comment.authorUsername}}</p>
+    <p ng-click="toggleUserPreview()">{{comment.authorUsername}}</p>
+    <div ng-if="userPreviewActive"><div show-user-preview username="comment.authorUsername"></div></div>
     <p>{{comment.date}}</p>
     <p>{{comment.commentContent}}</p>
     <div show-comment-likes comment="comment" post-id="postId"></div>
