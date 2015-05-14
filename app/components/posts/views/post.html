@@ -2,7 +2,7 @@
     <p>{{post.author.username}}</p>
     <p>{{post.date}}</p>
     <p>{{post.postContent}}</p>
-    <div ng-include="'components/post-likes/views/post-likes.html'"></div>
+    <div show-post-likes post="post"></div>
     <button ng-click="deletePost(post.id)">Delete</button>
     <button ng-click="toggleCommentForm()">
         <span ng-if="showForm">Hide form</span>
@@ -14,8 +14,7 @@
 
     <div>Comments count: {{post.totalCommentsCount}}</div>
     <div ng-repeat="comment in post.comments">
-        <!--<div ng-include="'components/comments/views/comment.html'"></div>-->
-        <div show-comment comment="comment"></div>
+        <div show-comment comment="comment" post-id="post.id"></div>
     </div>
 </div>
 <hr>

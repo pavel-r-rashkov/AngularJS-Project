@@ -21,13 +21,13 @@ angular.module('postsModule').directive('showPost', function () {
 
             $scope.toggleCommentForm = function() {
                 $scope.showForm = !$scope.showForm;
-            }
+            };
 
             $scope.appendComment = function(comment) {
 
                 $scope.post.comments.push(comment);
                 $scope.post.totalCommentsCount += 1;
-            }
+            };
 
 
         }

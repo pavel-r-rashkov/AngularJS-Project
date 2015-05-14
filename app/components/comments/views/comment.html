@@ -2,5 +2,6 @@
     <p>{{comment.authorUsername}}</p>
     <p>{{comment.date}}</p>
     <p>{{comment.commentContent}}</p>
-    <div ng-include="'components/comment-likes/views/comment-likes.html'"></div>
+    <div show-comment-likes comment="comment" post-id="postId"></div>
+    <!--<div ng-include="'components/comment-likes/views/comment-likes.html'"></div>-->
 </div>

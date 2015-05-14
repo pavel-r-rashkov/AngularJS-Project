@@ -12,6 +12,7 @@ angular.module('commentsModule').directive('newComment', function () {
                     .then(
                     function(data) {
                         $scope.appendComment({newComment: data['data']});
+                        $scope.comment.commentContent = '';
                     },
                     function() {
                         console.log('error adding comment');
