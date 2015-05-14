@@ -14,7 +14,7 @@
 
     <div>Comments count: {{post.totalCommentsCount}}</div>
     <div ng-repeat="comment in post.comments">
-        <div show-comment comment="comment" post-id="post.id"></div>
+        <div show-comment comment="comment" post-id="post.id" remove-comment="removeComment(commentId)"></div>
     </div>
 </div>
 <hr>

@@ -4,7 +4,7 @@ angular.module('friendsModule')
     .controller('friendsListController', ['$scope', 'friendsService', '$routeParams', function($scope, friendsService, $routeParams) {
         var username = $routeParams['user'];
 
-        if(username === 'me') {
+        if(username === localStorage['username']) {
             friendsService.getFriends()
                 .then(
                 function(data) {

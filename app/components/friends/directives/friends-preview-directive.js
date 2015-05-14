@@ -12,7 +12,7 @@ angular.module('friendsModule').directive('showFriendsPreview', function () {
                     .then(
                     function(data) {
                         $scope.totalCount = data['data']['totalCount'];
-                        $scope.friends = data['data'];
+                        $scope.friends = data['data']['friends'];
                     },
                     function() {
                         console.log('error getting friends preview');

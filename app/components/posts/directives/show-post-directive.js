@@ -24,11 +24,14 @@ angular.module('postsModule').directive('showPost', function () {
             };
 
             $scope.appendComment = function(comment) {
-
                 $scope.post.comments.push(comment);
                 $scope.post.totalCommentsCount += 1;
             };
 
+            $scope.removeComment = function(commentId) {
+                $scope.post.totalCommentsCount -= 1;
+                $scope.post.comments = $scope.post.comments.filter(function(element) {return element.id != commentId;});
+            }
 
         }
     };
