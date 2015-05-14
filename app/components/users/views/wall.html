@@ -2,7 +2,7 @@
 <div>
     <p>{{userFullData.name}}</p>
     <p>{{userFullData.username}}</p>
-    <p>{{userFullData.gender}}</p>
+    <p>{{userFullData.gender | digitToGender}}</p>
 </div>
 <hr>
 <hr>
@@ -11,4 +11,6 @@
 </div>
 <div new-post posts-update="showPosts()" wall-owner="username"></div>
 <div>friends preview</div>
-<div show-friends-preview username="username"></div>
+<div ng-if="showFriendsPreview">
+    <div show-friends-preview username="username"></div>
+</div>

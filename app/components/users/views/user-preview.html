@@ -1,6 +1,6 @@
 <div>
     <p></p>
     <p>{{userData.name}}</p>
-    <p>{{userData.gender}}</p>
+    <p>{{userData.gender | digitToGender}}</p>
     <button ng-click="sendFriendRequest(userData.username)">Send friend request</button>
 </div>

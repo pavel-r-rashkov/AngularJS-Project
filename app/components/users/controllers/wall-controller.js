@@ -20,6 +20,7 @@ angular.module('usersModule')
             .then(
             function(data) {
                 $scope.userFullData = data['data'];
+                $scope.showFriendsPreview = data['data']['isFriend'] || (username === localStorage['username']);
             },
             function() {
                 console.log('error getting user full data');
