@@ -1,7 +1,7 @@
 <div>
     <p ng-click="toggleUserPreview()">{{post.author.username}}</p>
     <div ng-if="userPreviewActive"><div show-user-preview username="post.author.username"></div></div>
-    <p>{{post.date}}</p>
+    <p>{{post.date | date:'yyyy-MM-dd HH:mm'}}</p>
     <p>{{post.postContent}}</p>
     <div show-post-likes post="post"></div>
     <button ng-click="deletePost(post.id)">Delete</button>

@@ -1,6 +1,7 @@
 angular.module('navigationModule', [])
-    .controller('navigationController', ['$scope', 'friendsService', function($scope, friendsService) {
+    .controller('navigationController', ['$scope', 'friendsService', 'usersService', function($scope, friendsService, usersService) {
         $scope.active = false;
+        $scope.search = {};
 
         $scope.getUsername = function() {
             return localStorage['username'];
@@ -32,6 +33,21 @@ angular.module('navigationModule', [])
                 },
                 function() {
                     console.log('error getting friend requests');
+                });
+        }
+
+        $scope.loadUsers = function() {
+            if($scope.search.searchTerm === '') {
+                $scope.users = [];
+                return;
+            }
+            usersService.searchUsersByName($scope.search.searchTerm)
+                .then(
+                function(data) {
+                    $scope.users = data['data'];
+                },
+                function() {
+                    console.log('error getting users result');
                 });
         }
     }]);
