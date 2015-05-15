@@ -12,8 +12,9 @@
 <div ng-repeat="post in posts">
     <div show-post posts-update="showPosts()" post="post"></div>
 </div>
+<div ng-show="loadingPosts">Loading posts...</div>
 <div new-post posts-update="showPosts()" wall-owner="username"></div>
-<div>friends preview</div>
+<div scroll>friends preview</div>
 <div ng-if="showFriendsPreview">
     <div show-friends-preview username="username"></div>
 </div>
