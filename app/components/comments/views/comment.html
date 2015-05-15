@@ -5,4 +5,12 @@
     <p>{{comment.commentContent}}</p>
     <div show-comment-likes comment="comment" post-id="postId"></div>
     <button ng-click="deleteComment(postId, comment.id)">Delete comment</button>
+
+    <button ng-click="toggleCommentEditForm()">
+        <span ng-show="showCommentEditForm">Hide form</span>
+        <span ng-show="!showCommentEditForm">Edit comment</span>
+    </button>
+    <div ng-if="showCommentEditForm">
+        <div edit-comment comment="comment" post-id="postId"></div>
+    </div>
 </div>

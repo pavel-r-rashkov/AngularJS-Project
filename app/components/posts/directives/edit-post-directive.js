@@ -7,14 +7,13 @@ angular.module('postsModule').directive('editPost', function () {
         controller: function ($scope, $element, $attrs, postsService) {
 
             $scope.editedPost = {
-                postContent: $scope.postContent
+                postContent: $scope.post.postContent
             };
 
             $scope.editPost = function(post) {
                 postsService.editPost($scope.post.id, post)
                     .then(
                     function(data) {
-
                         $scope.post.postContent = data['data']['content'];
                     },
                     function(error) {

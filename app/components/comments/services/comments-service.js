@@ -19,11 +19,8 @@ angular.module('commentsModule')
             addComment: function(postId, comment) {
                 return $http.post(baseUrl + '/' + postId + '/comments', comment, getConfig());
             },
-            editComment: function(postId, commentId, content) {
-                var data = {
-                    commentContent: content
-                };
-                return $http.put(baseUrl + '/' + postId + '/comments/' + commentId, data, getConfig());
+            editComment: function(postId, commentId, comment) {
+                return $http.put(baseUrl + '/' + postId + '/comments/' + commentId, comment, getConfig());
             },
             deleteComment: function(postId, commentId) {
                 return $http.delete(baseUrl + '/' + postId + '/comments/' + commentId, getConfig());

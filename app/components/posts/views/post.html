@@ -14,8 +14,8 @@
     </div>
 
     <button ng-click="togglePostEditForm()">
-        <span ng-show="showAddForm">Hide form</span>
-        <span ng-show="!showAddForm">Edit post</span>
+        <span ng-show="showEditForm">Hide form</span>
+        <span ng-show="!showEditForm">Edit post</span>
     </button>
     <div ng-if="showEditForm">
         <div edit-post post="post"></div>
