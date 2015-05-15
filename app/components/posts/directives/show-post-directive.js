@@ -17,11 +17,16 @@ angular.module('postsModule').directive('showPost', function () {
                     });
             };
 
-            $scope.showForm = false;
+            $scope.showAddForm = false;
+            $scope.showEditForm = false;
             $scope.userPreviewActive = false;
 
             $scope.toggleCommentForm = function() {
-                $scope.showForm = !$scope.showForm;
+                $scope.showAddForm = !$scope.showAddForm;
+            };
+
+            $scope.togglePostEditForm = function() {
+                $scope.showEditForm = !$scope.showEditForm;
             };
 
             $scope.appendComment = function(comment) {
@@ -32,11 +37,11 @@ angular.module('postsModule').directive('showPost', function () {
             $scope.removeComment = function(commentId) {
                 $scope.post.totalCommentsCount -= 1;
                 $scope.post.comments = $scope.post.comments.filter(function(element) {return element.id != commentId;});
-            }
+            };
 
             $scope.toggleUserPreview = function() {
                 $scope.userPreviewActive = !$scope.userPreviewActive;
-            }
+            };
 
         }
     };

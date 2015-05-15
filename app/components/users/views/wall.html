@@ -1,8 +1,11 @@
 <h2>User wall {{username}}</h2>
 <div>
+    Cover:<img ng-src="data:image/jpeg;base64,{{userFullData.coverImageData}}"><br>
+    <img ng-src="data:image/jpeg;base64,{{userFullData.profileImageData}}">
     <p>{{userFullData.name}}</p>
     <p>{{userFullData.username}}</p>
     <p>{{userFullData.gender | digitToGender}}</p>
+    <p><button ng-click="sendFriendRequest(userFullData.username)">Send friend request</button></p>
 </div>
 <hr>
 <hr>

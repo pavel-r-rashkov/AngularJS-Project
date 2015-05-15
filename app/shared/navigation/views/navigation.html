@@ -1,16 +1,16 @@
 <nav ng-controller="navigationController" >
     <ul ng-if="getLoggedIn()">
-        <li><a ng-href="#/{{getUsername()}}/wall">{{getUsername()}}</a></li>
+        <li><a ng-href="#/{{currentUser.username}}/wall"><img ng-src="data:image/jpeg;base64,{{currentUser.profileImageData}}"/>{{currentUser.username}}</a></li>
         <li><a ng-href="#/profile/feed">news feed</a></li>
         <li>
             <a ng-click="toggleRequests()">requests {{requestsCount.count}}</a>
-            <div ng-if="active">
+            <div ng-if="requestsActive">
                 <div show-friend-requests requests="requests" requests-count="requestsCount"></div>
             </div>
         </li>
         <li><a ng-href="#/profile/edit">edit profile</a></li>
         <li><a ng-href="#/profile/changepassword">change password</a></li>
-        <li><a ng-href="#/logout">logout</a></li>
+        <li><a ng-click="logout()">logout</a></li>
         <li>
             <input ng-model="search.searchTerm" ng-change="loadUsers()" placeholder="Search..."/>
             <div ng-repeat="user in users">

@@ -17,8 +17,33 @@ angular.module('profilesModule')
                 function() {
                     $location.path('/view1');
                 },
-                function() {
+                function(error) {
                     console.log('error editing profile');
                 });
+        };
+
+        $scope.setImageFile = function(element, propertyName) {
+            $scope.$apply(function($scope) {
+                var profileImageFile = element.files[0];
+                getBinaryData(profileImageFile, function(data) {$scope.user[propertyName] = data;});
+            });
+        };
+
+        function getBinaryData(file, onLoadCallback) {
+            var fileReader = new FileReader();
+            fileReader.onload = function(e) {
+                var data = e.target.result;
+                var tokens = data.split(',');
+                $scope.$apply(function () {
+                    onLoadCallback(tokens[1]);
+                });
+            };
+
+            fileReader.onprogress = function(e) {
+                console.log(e);
+            };
+
+            fileReader.readAsDataURL(file);
         }
+
     }]);

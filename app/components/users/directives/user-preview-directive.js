@@ -18,7 +18,7 @@ angular.module('usersModule').directive('showUserPreview', function () {
                 friendsService.sendFriendRequest(username)
                     .then(
                     function(data) {
-
+                        console.log('request sent');
                     },
                     function() {
                         console.log('error sending friend request');

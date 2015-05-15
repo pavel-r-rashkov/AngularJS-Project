@@ -6,11 +6,19 @@
     <div show-post-likes post="post"></div>
     <button ng-click="deletePost(post.id)">Delete</button>
     <button ng-click="toggleCommentForm()">
-        <span ng-if="showForm">Hide form</span>
-        <span ng-if="!showForm">Add comment</span>
+        <span ng-show="showAddForm">Hide form</span>
+        <span ng-show="!showAddForm">Add comment</span>
     </button>
-    <div ng-if="showForm">
+    <div ng-show="showAddForm">
         <div new-comment post-id="post.id" append-comment="appendComment(newComment)"></div>
+    </div>
+
+    <button ng-click="togglePostEditForm()">
+        <span ng-show="showAddForm">Hide form</span>
+        <span ng-show="!showAddForm">Edit post</span>
+    </button>
+    <div ng-if="showEditForm">
+        <div edit-post post="post"></div>
     </div>
 
     <div>Comments count: {{post.totalCommentsCount}}</div>

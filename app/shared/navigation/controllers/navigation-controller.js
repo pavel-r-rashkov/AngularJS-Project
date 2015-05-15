@@ -1,19 +1,24 @@
 angular.module('navigationModule', [])
-    .controller('navigationController', ['$scope', 'friendsService', 'usersService', function($scope, friendsService, usersService) {
-        $scope.active = false;
+    .controller('navigationController', ['$scope', 'friendsService', 'usersService', '$location', function($scope, friendsService, usersService, $location) {
+        $scope.requestsActive = false;
         $scope.search = {};
-
-        $scope.getUsername = function() {
-            return localStorage['username'];
-        };
 
         $scope.getLoggedIn = function() {
             return localStorage['sessionToken'] !== undefined;
         };
 
+        usersService.getUserPreviewData(localStorage['username'])
+            .then(
+            function(data) {
+                $scope.currentUser = data['data'];
+            },
+            function() {
+                console.log('error getting user data');
+            });
+
         $scope.toggleRequests = function() {
-            $scope.active = !$scope.active;
-            if($scope.active) {
+            $scope.requestsActive = !$scope.requestsActive;
+            if($scope.requestsActive) {
                 getRequests();
             }
         };
@@ -47,7 +52,18 @@ angular.module('navigationModule', [])
                     $scope.users = data['data'];
                 },
                 function() {
-                    console.log('error getting users result');
+                    console.log('error getting user results');
+                });
+        }
+
+        $scope.logout = function() {
+            usersService.logout()
+                .then(
+                function() {
+                    $location.path('/home');
+                },
+                function() {
+                    console.log('error logging out');
                 });
         }
     }]);

@@ -2,35 +2,40 @@
     <h1>Social Network</h1>
     <div>
         <h2>Login</h2>
-        <form novalidate class="login-form">
+        <form novalidate class="login-form" name="loginForm">
             <label for="username">Username</label><br>
-            <input id="username" ng-model="user.username"/><br>
+            <input id="username" ng-model="user.username" required=""/><br>
             <label for="password">Password</label><br>
-            <input id="password" type="password" ng-model="user.password"/><br>
-            <input type="submit" value="Login" ng-click="login(user)"/>
+            <input id="password" type="password" ng-model="user.password" required=""/><br>
+            <input type="submit" value="Login" ng-click="login(user)" ng-disabled="!loginForm.$valid"/>
         </form>
     </div>
     <div>
         <h2>Registration</h2>
-        <form novalidate class="registration-form">
+        <form novalidate class="registration-form" name="registrationForm">
             <label for="usernameReg">Username</label><br>
-            <input id="usernameReg" ng-model="newUser.username"/><br>
+            <input id="usernameReg" ng-model="newUser.username" name="username" required=""/>
+            <span ng-show="registrationForm.username.$error.required">username is required</span><br>
             <label for="passwordReg">Password</label><br>
-            <input id="passwordReg" type="password" ng-model="newUser.password"/><br>
+            <input id="passwordReg" type="password" ng-model="newUser.password" name="password" required=""/>
+            <span ng-show="registrationForm.password.$error.required">password is required</span><br>
             <label for="passwordConfirm">Confirm password</label><br>
-            <input id="passwordConfirm" type="password" ng-model="newUser.confirmPassword"/><br>
+            <input id="passwordConfirm" type="password" ng-model="newUser.confirmPassword" name="confirmPassword" required=""/>
+            <span ng-show="registrationForm.confirmPassword.$error.required">you need to confirm your password</span><br>
             <label for="name">Name</label><br>
-            <input id="name" ng-model="newUser.name"/><br>
+            <input id="name" ng-model="newUser.name" name="name" required=""/>
+            <span ng-show="registrationForm.name.$error.required">name is required</span><br>
             <label for="email">Email</label><br>
-            <input id="email" ng-model="newUser.email"/><br>
-            <!--<label>Gender</label><br>-->
-            <!--<label for="male">Male</label>-->
-            <!--<input id="male" type="radio" name="gender" ng-model="newUser.gender" value="Male"/>-->
-            <!--<label for="female">Female</label>-->
-            <!--<input id="female" type="radio" name="gender" ng-model="newUser.gender" value="Female"/>-->
-            <!--<label for="other">Other</label>-->
-            <!--<input id="other" type="radio" name="gender" ng-model="newUser.gender" value="Other"/>-->
-            <input type="submit" value="Registration" ng-click="register(newUser)"/>
+            <input id="email" ng-model="newUser.email" name="email" required=""/>
+            <span ng-show="registrationForm.email.$error.required">email is required</span><br>
+            <label>Gender</label><br>
+            <label for="male">Male</label>
+            <input id="male" type="radio" name="gender" ng-model="newUser.gender" value="1"/>
+            <label for="female">Female</label>
+            <input id="female" type="radio" name="gender" ng-model="newUser.gender" value="2"/>
+            <label for="other">Other</label>
+            <input id="other" type="radio" name="gender" ng-model="newUser.gender" value="0"/>
+            <input type="submit" value="Registration" ng-click="register(newUser)" ng-disabled="!registrationForm.$valid"/>
         </form>
     </div>
 </div>

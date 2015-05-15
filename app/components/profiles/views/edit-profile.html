@@ -1,14 +1,21 @@
-<form novalidate class="profile-edit-form">
+<form novalidate class="profile-edit-form" name="editProfileForm">
     <label for="name">Name</label><br>
-    <input id="name" ng-model="user.name"/><br>
+    <input id="name" ng-model="user.name" name="name"/><br>
     <label for="email">Email</label><br>
-    <input id="email" ng-model="user.email"/><br>
+    <input type="email" id="email" ng-model="user.email" name="email"/><span ng-show="editProfileForm.email.$error.email">Valid email is required</span><br>
     <label>Gender</label><br>
     <label for="male">Male</label>
-    <input id="male" type="radio" name="gender" ng-model="user.gender" value="Male"/>
+    <input id="male" type="radio" name="gender" ng-model="user.gender" value="1"/>
     <label for="female">Female</label>
-    <input id="female" type="radio" name="gender" ng-model="user.gender" value="Female"/>
+    <input id="female" type="radio" name="gender" ng-model="user.gender" value="2"/>
     <label for="other">Other</label>
-    <input id="other" type="radio" name="gender" ng-model="user.gender" value="Other"/>
+    <input id="other" type="radio" name="gender" ng-model="user.gender" value="0"/><br>
+    <label>Profile picture</label>
+    <input type="file" onchange="angular.element(this).scope().setImageFile(this, 'profileImageData')">
+    <img ng-src="data:image/jpeg;base64,{{user.profileImageData}}"><br>
+    <label>Cover picture</label>
+    <input type="file" onchange="angular.element(this).scope().setImageFile(this, 'coverImageData')">
+    <img ng-src="data:image/jpeg;base64,{{user.coverImageData}}"><br>
     <input type="submit" value="Save changes" ng-click="editProfile(user)"/>
 </form>
+<a ng-href="#/{{user.username}}/wall"><button>Cancel</button></a>

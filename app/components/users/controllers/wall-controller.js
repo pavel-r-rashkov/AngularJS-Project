@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('usersModule')
-    .controller('wallController', ['$scope', 'usersService', '$routeParams', function($scope, usersService, $routeParams) {
+    .controller('wallController', ['$scope', 'usersService', '$routeParams', 'friendsService', function($scope, usersService, $routeParams, friendsService) {
         var username = $routeParams['username'];
         $scope.username = username;
 
@@ -15,6 +15,17 @@ angular.module('usersModule')
                     console.log('error getting wall data');
                 });
         };
+
+        $scope.sendFriendRequest = function(username) {
+            friendsService.sendFriendRequest(username)
+                .then(
+                function(data) {
+                    console.log('request sent');
+                },
+                function() {
+                    console.log('error sending friend request');
+                });
+        }
 
         usersService.getUserData(username)
             .then(
