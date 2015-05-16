@@ -1,5 +1,5 @@
 <div>
-    <p ng-click="toggleUserPreview()">{{post.author.username}}</p>
+    <p ng-mouseover="toggleUserPreview()" ng-mouseleave="toggleUserPreview()">{{post.author.username}}</p>
     <div ng-if="userPreviewActive"><div show-user-preview username="post.author.username"></div></div>
     <p>{{post.date | date:'yyyy-MM-dd HH:mm'}}</p>
     <p>{{post.postContent}}</p>
@@ -20,8 +20,11 @@
     <div ng-if="showEditForm">
         <div edit-post post="post"></div>
     </div>
-
     <div>Comments count: {{post.totalCommentsCount}}</div>
+
+    <div ng-show="!allCommentsShown()">
+        <button ng-click="toggleShowComments()">Show all comments</button>
+    </div>
     <div ng-repeat="comment in post.comments">
         <div show-comment comment="comment" post-id="post.id" comments="post.comments" comments-count="post.totalCommentsCount"></div>
     </div>

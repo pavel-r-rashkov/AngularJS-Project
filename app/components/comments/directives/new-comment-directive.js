@@ -12,17 +12,16 @@ angular.module('commentsModule').directive('newComment', function () {
                 commentsService.addComment($scope.postId, comment)
                     .then(
                     function(data) {
-                        $scope.comments.push(data['data']);
-                        //$scope.appendComment({newComment: data['data']});
                         $scope.comment.commentContent = '';
+                        if($scope.commentsCount <= 2 || $scope.comments.length >= 4) {
+                            $scope.comments.push(data['data']);
+                        }
                         $scope.commentsCount++;
                     },
                     function() {
                         console.log('error adding comment');
                     });
             }
-
-
         }
     };
 });

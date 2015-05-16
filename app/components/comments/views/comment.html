@@ -1,5 +1,5 @@
 <div>
-    <p ng-click="toggleUserPreview()">{{comment.authorUsername}}</p>
+    <p ng-mouseover="toggleUserPreview()" ng-mouseleave="toggleUserPreview()">{{comment.authorUsername}}</p>
     <div ng-if="userPreviewActive"><div show-user-preview username="comment.authorUsername"></div></div>
     <p>{{comment.date | date:'yyyy-MM-dd HH:mm'}}</p>
     <p>{{comment.commentContent}}</p>

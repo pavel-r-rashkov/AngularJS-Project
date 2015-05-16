@@ -13,9 +13,6 @@ angular.module('commentsModule')
         var baseUrl = 'http://softuni-social-network.azurewebsites.net/api/posts';
 
         var commentsRepo = {
-            getPostComments: function(postId) {
-                return $http.get(baseUrl + '/' + postId + '/comments', getConfig());
-            },
             addComment: function(postId, comment) {
                 return $http.post(baseUrl + '/' + postId + '/comments', comment, getConfig());
             },

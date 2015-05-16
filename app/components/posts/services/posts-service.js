@@ -24,6 +24,9 @@ angular.module('postsModule')
             },
             deletePost: function(postId) {
                 return $http.delete(baseUrl + '/' + postId, getConfig());
+            },
+            getPostComments: function(postId) {
+                return $http.get(baseUrl + '/' + postId + '/comments', getConfig());
             }
         };
 
