@@ -1,12 +1,20 @@
 angular.module('usersModule')
     .directive("scroll", function ($window) {
-        return function(scope, element, attrs) {
-            angular.element($window).bind("scroll", function() {
-                var elementPositionTop = this.pageYOffset + this.innerHeight - element[0].offsetTop;
+        return {
+            link: function (scope, element, attrs) {
+                function handler() {
+                    var elementPositionTop = this.pageYOffset + this.innerHeight - element[0].offsetTop;
 
-                if(elementPositionTop > 10 && !scope.loadingPosts) {
-                    scope.showPosts(scope.lastPostId);
+                    if (elementPositionTop > parseInt(attrs['botOffset'])) {
+                        scope[attrs['callback']]();
+                    }
                 }
-            });
-    };
+
+                angular.element($window).bind("scroll", handler);
+
+                scope.$on('$destroy', function() {
+                    angular.element($window).unbind("scroll", handler);
+                });
+            }
+        }
 });

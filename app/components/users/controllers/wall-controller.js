@@ -6,18 +6,18 @@ angular.module('usersModule')
         $scope.username = username;
         $scope.posts = [];
         $scope.lastPostId;
-        $scope.loadingPosts = true;
+        $scope.loadingPosts = false;
 
-        $scope.showPosts = function(startPostId) {
-            startPostId = startPostId || '';
+        $scope.showPosts = function() {
+            if($scope.loadingPosts) {
+                return;
+            }
             $scope.loadingPosts = true;
+            var startPostId = $scope.lastPostId || '';
+
             usersService.getWall($routeParams['username'], startPostId, 5)
                 .then(
                 function(data) {
-                    //console.log(data['data']);
-                    //for(var i in data['data']) {
-                    //    console.log(data['data'][i].id + ' ' + data['data'][i].postContent);
-                    //}
                     $scope.posts.push.apply($scope.posts, data['data']);
                     if(data['data'].length > 0) {
                         $scope.lastPostId = data['data'][data['data'].length - 1].id;
@@ -39,7 +39,7 @@ angular.module('usersModule')
                 function() {
                     console.log('error sending friend request');
                 });
-        }
+        };
 
         usersService.getUserData(username)
             .then(

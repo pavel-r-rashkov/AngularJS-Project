@@ -1,7 +1,7 @@
 angular.module('postsModule').directive('newPost', function () {
     return {
         scope: {
-            postsUpdate: '&',
+            posts: '=posts',
             wallOwner: '=wallOwner'
         },
         templateUrl: 'components/posts/views/new-post.html',
@@ -13,8 +13,8 @@ angular.module('postsModule').directive('newPost', function () {
                 post.username = $scope.wallOwner;
                 postsService.addPost(post)
                     .then(
-                    function() {
-                        $scope.postsUpdate();
+                    function(data) {
+                        $scope.posts.unshift(data['data']);
                         $scope.post.postContent = '';
                     },
                     function(error) {

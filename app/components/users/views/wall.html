@@ -10,11 +10,13 @@
 <hr>
 <hr>
 <div ng-repeat="post in posts">
-    <div show-post posts-update="showPosts()" post="post"></div>
+    <div show-post post="post" posts="posts"></div>
 </div>
 <div ng-show="loadingPosts">Loading posts...</div>
-<div new-post posts-update="showPosts()" wall-owner="username"></div>
-<div scroll>friends preview</div>
+<div new-post posts="posts" wall-owner="username"></div>
+<div scroll callback="showPosts" bot-offset="10">
+    friends preview
+</div>
 <div ng-if="showFriendsPreview">
     <div show-friends-preview username="username"></div>
 </div>

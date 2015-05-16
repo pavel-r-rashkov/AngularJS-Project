@@ -3,7 +3,8 @@ angular.module('commentsModule').directive('showComment', function () {
         scope: {
             comment: '=comment',
             postId: '=postId',
-            removeComment: '&'
+            comments: '=comments',
+            commentsCount: '=commentsCount'
         },
         templateUrl: 'components/comments/views/comment.html',
         controller: function ($scope, $element, $attrs, commentsService) {
@@ -14,7 +15,8 @@ angular.module('commentsModule').directive('showComment', function () {
                 commentsService.deleteComment(postId, commentId)
                     .then(
                     function() {
-                        $scope.removeComment({commentId: commentId});
+                        $scope.commentsCount--;
+                        $scope.comments = $scope.comments.filter(function(element) {return element.id !== commentId;});
                     },
                     function() {
                         console.log('error deleting comment');

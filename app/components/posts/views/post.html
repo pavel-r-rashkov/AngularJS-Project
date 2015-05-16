@@ -10,7 +10,7 @@
         <span ng-show="!showAddForm">Add comment</span>
     </button>
     <div ng-show="showAddForm">
-        <div new-comment post-id="post.id" append-comment="appendComment(newComment)"></div>
+        <div new-comment post-id="post.id" comments="post.comments" comments-count="post.totalCommentsCount"></div>
     </div>
 
     <button ng-click="togglePostEditForm()">
@@ -23,7 +23,7 @@
 
     <div>Comments count: {{post.totalCommentsCount}}</div>
     <div ng-repeat="comment in post.comments">
-        <div show-comment comment="comment" post-id="post.id" remove-comment="removeComment(commentId)"></div>
+        <div show-comment comment="comment" post-id="post.id" comments="post.comments" comments-count="post.totalCommentsCount"></div>
     </div>
 </div>
 <hr>
