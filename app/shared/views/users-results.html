@@ -1,0 +1,6 @@
+<input ng-model="usersFilter.name"/>
+<div ng-repeat="user in users | filter:usersFilter">
+    <p>{{user.username}}</p>
+    <p>{{user.name}}</p>
+    <p>{{user.gender | digitToGender}}</p>
+</div>

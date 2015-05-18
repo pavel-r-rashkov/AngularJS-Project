@@ -4,10 +4,10 @@ angular.module('commentLikesModule')
 
         var commentLikesRepo = {
             getCommentDetailedLikes: function(postId, commentId) {
-                return $http.delete(baseUrl + '/' + postId + '/comments/' + commentId + '/likes', credentialsService.getConfig());
+                return $http.get(baseUrl + '/' + postId + '/comments/' + commentId + '/likes', credentialsService.getConfig());
             },
             getCommentPreviewLikes: function(postId, commentId) {
-                return $http.delete(baseUrl + '/' + postId + '/comments/' + commentId + '/likes/preview', credentialsService.getConfig());
+                return $http.get(baseUrl + '/' + postId + '/comments/' + commentId + '/likes/preview', credentialsService.getConfig());
             },
             likeComment: function(postId, commentId) {
                 return $http.post(baseUrl + '/' + postId + '/comments/' + commentId + '/likes', null, credentialsService.getConfig());

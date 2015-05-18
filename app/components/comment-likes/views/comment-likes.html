@@ -1,5 +1,5 @@
 <div>
-    <p>{{comment.likesCount}}</p>
+    <p><a ng-href="#/posts/{{postId}}/comments/{{comment.id}}/likes">{{comment.likesCount}} liked this comment</a></p>
     <p ng-if="!comment.liked"><button ng-click="likeComment(comment.id)">Like</button></p>
     <p ng-if="comment.liked"><button ng-click="unlikeComment(comment.id)">Unlike</button></p>
 </div>

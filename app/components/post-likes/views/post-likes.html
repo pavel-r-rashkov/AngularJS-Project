@@ -1,5 +1,5 @@
 <div>
-    <p>{{post.likesCount}}</p>
+    <p><a ng-href="#/posts/{{post.id}}/likes">{{post.likesCount}} liked this post</a></p>
     <p ng-if="post.liked"><button ng-click="unlikePost(post.id)">Unlike</button></p>
     <p ng-if="!post.liked"><button ng-click="likePost(post.id)">Like</button></p>
 </div>

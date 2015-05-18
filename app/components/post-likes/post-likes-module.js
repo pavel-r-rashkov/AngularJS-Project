@@ -3,5 +3,8 @@ angular.module('postLikesModule', [])
         $routeProvider.when('/postLikes', {
             templateUrl: 'components/post-likes/views/view3.html',
             controller: 'postLikesController'
+        }).when('/posts/:postId/likes', {
+            templateUrl: 'components/post-likes/views/post-likes-data.html',
+            controller: 'postLikesDataController'
         });
     }]);

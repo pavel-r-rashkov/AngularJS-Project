@@ -1,7 +1,2 @@
 <h1>Friends: </h1>
-<input ng-model="friendsFilter.name"/>
-<div ng-repeat="friend in friends | filter:friendsFilter">
-    <p>{{friend.username}}</p>
-    <p>{{friend.name}}</p>
-    <p>{{friend.gender}}</p>
-</div>
+<div show-users-results users="friends"></div>
