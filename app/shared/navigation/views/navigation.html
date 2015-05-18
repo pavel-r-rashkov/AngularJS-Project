@@ -1,6 +1,11 @@
 <nav ng-controller="navigationController" >
     <ul ng-if="getLoggedIn()">
-        <li><a ng-href="#/{{currentUser.username}}/wall"><img ng-src="data:image/jpeg;base64,{{currentUser.profileImageData}}"/>{{currentUser.username}}</a></li>
+        <li>
+            <a ng-href="#/{{getCurrentUserData().username}}/wall">
+                <img ng-src="data:image/jpeg;base64,{{getCurrentUserData().profileImageData}}"/>
+                {{getCurrentUserData().name}}
+            </a>
+        </li>
         <li><a ng-href="#/profile/feed">news feed</a></li>
         <li>
             <a ng-click="toggleRequests()">requests {{requestsCount.count}}</a>

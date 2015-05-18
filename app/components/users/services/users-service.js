@@ -8,16 +8,6 @@ angular.module('usersModule')
             }
 
             return config;
-        };
-
-        function setUserData(username, sessionToken) {
-            localStorage['username'] = username;
-            localStorage['sessionToken'] = sessionToken;
-        }
-
-        function deleteUserData() {
-            delete localStorage['username'];
-            delete localStorage['sessionToken'];
         }
 
         var baseUrl = 'http://softuni-social-network.azurewebsites.net/api/users';
@@ -29,14 +19,10 @@ angular.module('usersModule')
                     password: password
                 };
 
-                return $http.post(baseUrl + '/login', params).then(function(data) {
-                    setUserData(data['data']['userName'], data['data']['access_token']);
-                });
+                return $http.post(baseUrl + '/login', params);
             },
             logout: function() {
-                return $http.post(baseUrl + '/logout', null, getConfig()).then(function() {
-                    deleteUserData();
-                });
+                return $http.post(baseUrl + '/logout', null, getConfig());
             },
             register: function(username, password, confirmPassword, name, email) {
                 var params = {
@@ -46,9 +32,7 @@ angular.module('usersModule')
                     name: name,
                     email: email
                 };
-                return $http.post(baseUrl + '/register', params).then(function(data) {
-                    setUserData(data['data']['userName'], data['data']['access_token']);
-                });
+                return $http.post(baseUrl + '/register', params);
             },
             getUserData: function(username) {
                 return $http.get(baseUrl + '/' + username, getConfig());

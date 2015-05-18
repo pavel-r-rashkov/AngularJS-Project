@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('usersModule')
-    .controller('wallController', ['$scope', 'usersService', '$routeParams', 'friendsService', function($scope, usersService, $routeParams, friendsService) {
+    .controller('wallController', ['$scope', 'usersService', '$routeParams', 'friendsService', 'credentialsService', function($scope, usersService, $routeParams, friendsService, credentialsService) {
         var username = $routeParams['username'];
+        var lastPostId;
+
         $scope.username = username;
         $scope.posts = [];
-        $scope.lastPostId;
         $scope.loadingPosts = false;
 
         $scope.showPosts = function() {
@@ -13,14 +14,14 @@ angular.module('usersModule')
                 return;
             }
             $scope.loadingPosts = true;
-            var startPostId = $scope.lastPostId || '';
+            var startPostId = lastPostId || '';
 
             usersService.getWall($routeParams['username'], startPostId, 5)
                 .then(
                 function(data) {
                     $scope.posts.push.apply($scope.posts, data['data']);
                     if(data['data'].length > 0) {
-                        $scope.lastPostId = data['data'][data['data'].length - 1].id;
+                        lastPostId = data['data'][data['data'].length - 1].id;
                     }
                     $scope.loadingPosts = false;
                 },
@@ -44,8 +45,13 @@ angular.module('usersModule')
         usersService.getUserData(username)
             .then(
             function(data) {
+                var currentUsername = credentialsService.getCurrentUser().username;
                 $scope.userFullData = data['data'];
-                $scope.showFriendsPreview = data['data']['isFriend'] || (username === localStorage['username']);
+                $scope.friendStatus = data['data']['hasPendingRequest'] ? 'pending' : 'notFriend';
+                $scope.friendStatus = data['data']['isFriend'] ? 'friend' : $scope.friendStatus;
+                $scope.friendStatus = username === currentUsername ? '': $scope.friendStatus;
+                $scope.showFriendsPreview = data['data']['isFriend'] || (username === currentUsername);
+                $scope.showAddPost = data['data']['isFriend'] || (username === currentUsername);
             },
             function() {
                 console.log('error getting user full data');

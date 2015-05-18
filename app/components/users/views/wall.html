@@ -5,7 +5,12 @@
     <p>{{userFullData.name}}</p>
     <p>{{userFullData.username}}</p>
     <p>{{userFullData.gender | digitToGender}}</p>
-    <p><button ng-click="sendFriendRequest(userFullData.username)">Send friend request</button></p>
+    <div ng-switch="friendStatus">
+        <button ng-switch-when="notFriend" ng-click="sendFriendRequest(userFullData.username)">Send friend request</button>
+        <div ng-switch-when="friend">Friend</div>
+        <div ng-switch-when="pending">Pending</div>
+        <div ng-switch-default>...</div>
+    </div>
 </div>
 <hr>
 <hr>
@@ -13,10 +18,9 @@
     <div show-post post="post" posts="posts"></div>
 </div>
 <div ng-show="loadingPosts">Loading posts...</div>
-<div new-post posts="posts" wall-owner="username"></div>
+<div ng-if="showAddPost" new-post posts="posts" wall-owner="username"></div>
 <div scroll callback="showPosts" bot-offset="10">
     friends preview
 </div>
-<div ng-if="showFriendsPreview">
-    <div show-friends-preview username="username"></div>
-</div>
+<div ng-if="showFriendsPreview" show-friends-preview username="username"></div>
+

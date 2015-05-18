@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('profilesModule')
-    .controller('editProfileController', ['$scope', 'profilesService', '$location', function($scope, profilesService, $location) {
+    .controller('editProfileController', ['$scope', 'profilesService', 'credentialsService', '$location', function($scope, profilesService, credentialsService, $location) {
         profilesService.getMyData()
             .then(
             function(data) {
@@ -14,7 +14,8 @@ angular.module('profilesModule')
         $scope.editProfile = function(userData) {
             profilesService.editProfile(userData)
                 .then(
-                function() {
+                function(data) {
+                    credentialsService.setCurrentUser(userData['name'], userData['profileImageData']);
                     $location.path('/view1');
                 },
                 function(error) {
