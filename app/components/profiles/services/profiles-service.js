@@ -1,29 +1,19 @@
 angular.module('profilesModule')
-    .factory('profilesService', ['$http', function($http) {
-        function getConfig() {
-            var config = {};
-            if(localStorage['sessionToken']) {
-                config.headers = {};
-                config.headers.Authorization = 'Bearer ' + localStorage['sessionToken'];
-            }
-
-            return config;
-        };
-
+    .factory('profilesService', ['$http', 'credentialsService', function($http, credentialsService) {
         var baseUrl = 'http://softuni-social-network.azurewebsites.net/api/me';
 
         var profilesRepo = {
             getMyData: function() {
-                return $http.get(baseUrl, getConfig());
+                return $http.get(baseUrl, credentialsService.getConfig());
             },
             getNewsFeed: function(startPostId, pageSize) {
-                return $http.get(baseUrl + '/feed?StartPostId=' + startPostId + '&PageSize=' + pageSize, getConfig());
+                return $http.get(baseUrl + '/feed?StartPostId=' + startPostId + '&PageSize=' + pageSize, credentialsService.getConfig());
             },
             changePassword: function(data) {
-                return $http.put(baseUrl + '/changepassword', data, getConfig());
+                return $http.put(baseUrl + '/changepassword', data, credentialsService.getConfig());
             },
             editProfile: function(profileData) {
-                return $http.put(baseUrl, profileData, getConfig());
+                return $http.put(baseUrl, profileData, credentialsService.getConfig());
             }
         };
 

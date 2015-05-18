@@ -1,29 +1,19 @@
 angular.module('commentLikesModule')
-    .factory('commentLikesService', ['$http', function($http) {
-        function getConfig() {
-            var config = {};
-            if(localStorage['sessionToken']) {
-                config.headers = {};
-                config.headers.Authorization = 'Bearer ' + localStorage['sessionToken'];
-            }
-
-            return config;
-        };
-
+    .factory('commentLikesService', ['$http', 'credentialsService', function($http, credentialsService) {
         var baseUrl = 'http://softuni-social-network.azurewebsites.net/api/posts';
 
         var commentLikesRepo = {
             getCommentDetailedLikes: function(postId, commentId) {
-                return $http.delete(baseUrl + '/' + postId + '/comments/' + commentId + '/likes', getConfig());
+                return $http.delete(baseUrl + '/' + postId + '/comments/' + commentId + '/likes', credentialsService.getConfig());
             },
             getCommentPreviewLikes: function(postId, commentId) {
-                return $http.delete(baseUrl + '/' + postId + '/comments/' + commentId + '/likes/preview', getConfig());
+                return $http.delete(baseUrl + '/' + postId + '/comments/' + commentId + '/likes/preview', credentialsService.getConfig());
             },
             likeComment: function(postId, commentId) {
-                return $http.post(baseUrl + '/' + postId + '/comments/' + commentId + '/likes', null, getConfig());
+                return $http.post(baseUrl + '/' + postId + '/comments/' + commentId + '/likes', null, credentialsService.getConfig());
             },
             unlikeComment: function(postId, commentId) {
-                return $http.delete(baseUrl + '/' + postId + '/comments/' + commentId + '/likes', getConfig());
+                return $http.delete(baseUrl + '/' + postId + '/comments/' + commentId + '/likes', credentialsService.getConfig());
             }
         };
 

@@ -1,41 +1,31 @@
 angular.module('friendsModule')
-    .factory('friendsService', ['$http', function($http) {
-        function getConfig() {
-            var config = {};
-            if(localStorage['sessionToken']) {
-                config.headers = {};
-                config.headers.Authorization = 'Bearer ' + localStorage['sessionToken'];
-            }
-
-            return config;
-        };
-
+    .factory('friendsService', ['$http', 'credentialsService', function($http, credentialsService) {
         var baseUrl = 'http://softuni-social-network.azurewebsites.net/api';
 
         var friendsRepo = {
             getFriends: function() {
-                return $http.get(baseUrl + '/me/friends', getConfig());
+                return $http.get(baseUrl + '/me/friends', credentialsService.getConfig());
             },
             getMyFriendsPreview: function() {
-                return $http.get(baseUrl + '/me/friends/preview', getConfig());
+                return $http.get(baseUrl + '/me/friends/preview', credentialsService.getConfig());
             },
             getFriendRequests: function() {
-                return $http.get(baseUrl + '/me/requests', getConfig());
+                return $http.get(baseUrl + '/me/requests', credentialsService.getConfig());
             },
             sendFriendRequest: function(username) {
-                return $http.post(baseUrl + '/me/requests/' + username, null, getConfig());
+                return $http.post(baseUrl + '/me/requests/' + username, null, credentialsService.getConfig());
             },
             approveFriendRequest: function(requestId) {
-                return $http.put(baseUrl + '/me/requests/' + requestId + '?status=approved', null, getConfig());
+                return $http.put(baseUrl + '/me/requests/' + requestId + '?status=approved', null, credentialsService.getConfig());
             },
             rejectFriendRequest: function(requestId) {
-                return $http.put(baseUrl + '/me/requests/' + requestId + '?status=rejected', null, getConfig());
+                return $http.put(baseUrl + '/me/requests/' + requestId + '?status=rejected', null, credentialsService.getConfig());
             },
             getFriendsList: function(username) {
-                return $http.get(baseUrl + '/users/' + username + '/friends', getConfig());
+                return $http.get(baseUrl + '/users/' + username + '/friends', credentialsService.getConfig());
             },
             getFriendsPreview: function(username) {
-                return $http.get(baseUrl + '/users/' + username + '/friends/preview', getConfig());
+                return $http.get(baseUrl + '/users/' + username + '/friends/preview', credentialsService.getConfig());
             }
         };
 

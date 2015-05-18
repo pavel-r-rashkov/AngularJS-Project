@@ -1,15 +1,5 @@
 angular.module('usersModule')
-    .factory('usersService', ['$http', function($http) {
-        function getConfig() {
-            var config = {};
-            if(localStorage['sessionToken']) {
-                config.headers = {};
-                config.headers.Authorization = 'Bearer ' + localStorage['sessionToken'];
-            }
-
-            return config;
-        }
-
+    .factory('usersService', ['$http', 'credentialsService', function($http, credentialsService) {
         var baseUrl = 'http://softuni-social-network.azurewebsites.net/api/users';
 
         var usersRepo = {
@@ -22,7 +12,7 @@ angular.module('usersModule')
                 return $http.post(baseUrl + '/login', params);
             },
             logout: function() {
-                return $http.post(baseUrl + '/logout', null, getConfig());
+                return $http.post(baseUrl + '/logout', null, credentialsService.getConfig());
             },
             register: function(username, password, confirmPassword, name, email) {
                 var params = {
@@ -35,16 +25,17 @@ angular.module('usersModule')
                 return $http.post(baseUrl + '/register', params);
             },
             getUserData: function(username) {
-                return $http.get(baseUrl + '/' + username, getConfig());
+                return $http.get(baseUrl + '/' + username, credentialsService.getConfig());
             },
             getUserPreviewData: function(username) {
-                return $http.get(baseUrl + '/' + username + '/preview', getConfig());
+                return $http.get(baseUrl + '/' + username + '/preview', credentialsService.getConfig());
             },
             searchUsersByName: function(searchTerm) {
-                return $http.get(baseUrl + '/search?searchTerm=' + searchTerm, getConfig());
+                return $http.get(baseUrl + '/search?searchTerm=' + searchTerm, credentialsService.getConfig());
             },
             getWall: function(username, startPostId, pageSize) {
-                return $http.get(baseUrl + '/' + username + '/wall?StartPostId=' + startPostId + '&PageSize=' + pageSize, getConfig());
+                return $http.get(baseUrl + '/' + username + '/wall?StartPostId=' + startPostId + '&PageSize=' + pageSize,
+                    credentialsService.getConfig());
             }
         };
 
