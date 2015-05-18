@@ -1,5 +1,10 @@
 <div>
-    <p><a ng-href="#/posts/{{postId}}/comments/{{comment.id}}/likes">{{comment.likesCount}} liked this comment</a></p>
+    <p>
+        <a ng-href="#/posts/{{postId}}/comments/{{comment.id}}/likes" ng-mouseover="toggleLikesPreview()" ng-mouseleave="toggleLikesPreview()">
+            {{comment.likesCount}} liked this comment
+        </a>
+    </p>
+    <p ng-if="showLikesPreview" show-likes-preview users="likesUsersData"></p>
     <p ng-if="!comment.liked"><button ng-click="likeComment(comment.id)">Like</button></p>
     <p ng-if="comment.liked"><button ng-click="unlikeComment(comment.id)">Unlike</button></p>
 </div>
