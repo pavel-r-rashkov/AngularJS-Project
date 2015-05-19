@@ -1,11 +1,18 @@
-<div>
-    <p ng-mouseover="toggleUserPreview()" ng-mouseleave="toggleUserPreview()">{{post.author.username}}</p>
-    <div ng-if="userPreviewActive"><div show-user-preview username="post.author.username"></div></div>
+<div class="post-content">
+    <div ng-mouseover="toggleUserPreview()" ng-mouseleave="toggleUserPreview()" class="user-name">
+        {{post.author.username}}
+        <div ng-if="userPreviewActive" class="user-preview" show-user-preview username="post.author.username"></div>
+    </div>
+
     <p>{{post.date | date:'yyyy-MM-dd HH:mm'}}</p>
     <p>{{post.postContent}}</p>
     <div show-post-likes post="post"></div>
-    <button ng-click="deletePost(post.id)">Delete</button>
-    <button ng-click="toggleCommentForm()">
+
+    <button type="button" class="close delete-button" data-dismiss="alert" aria-label="Close" ng-click="deletePost(post.id)">
+        <span aria-hidden="true">&times;</span>
+    </button>
+
+    <button ng-click="toggleCommentForm()" class="btn btn-add-comment">
         <span ng-show="showAddForm">Hide form</span>
         <span ng-show="!showAddForm">Add comment</span>
     </button>
@@ -13,7 +20,7 @@
         <div new-comment post-id="post.id" comments="post.comments" comments-count="post.totalCommentsCount"></div>
     </div>
 
-    <button ng-click="togglePostEditForm()">
+    <button ng-click="togglePostEditForm()" class="btn btn-edit-post">
         <span ng-show="showEditForm">Hide form</span>
         <span ng-show="!showEditForm">Edit post</span>
     </button>
@@ -21,12 +28,12 @@
         <div edit-post post="post"></div>
     </div>
     <div>Comments count: {{post.totalCommentsCount}}</div>
-
-    <div ng-show="!allCommentsShown()">
-        <button ng-click="toggleShowComments()">Show all comments</button>
-    </div>
-    <div ng-repeat="comment in post.comments">
-        <div show-comment comment="comment" post-id="post.id" comments="post.comments" comments-count="post.totalCommentsCount"></div>
-    </div>
 </div>
-<hr>
+
+<div ng-repeat="comment in post.comments" show-comment comment="comment" post-id="post.id"
+     comments="post.comments" comments-count="post.totalCommentsCount" class="comment col-lg-offset-1">
+</div>
+
+<div ng-show="!allCommentsShown()">
+    <button ng-click="toggleShowComments()">Show all comments</button>
+</div>

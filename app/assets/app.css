@@ -28,3 +28,99 @@
   content: "";
   padding: 0;
 }
+
+/*layoout*/
+
+main {
+  margin-top: 40px;
+}
+
+footer {
+
+}
+
+/*navigation*/
+
+nav ul li {
+
+}
+
+.friend-requests {
+  position: absolute;
+
+}
+
+.users-search {
+  position: absolute;
+}
+
+/*posts*/
+
+.post {
+  background-color: #E9E9E9;
+  padding: 10px;
+  margin-top: 25px;
+}
+
+.post-content {
+  padding: 10px;
+  background-color: #F1F1F1;
+}
+
+/*comment*/
+
+.comment {
+  padding: 10px;
+  margin: 10px 0px;
+  background-color: #F1F1F1;
+}
+
+/*likes*/
+
+.likes-preview {
+  z-index: 100;
+  position: absolute;
+  padding: 5px;
+  width: 170px;
+  left: 60px;
+  border: 1px solid #5E9AA2;
+  background-color: #F1F1F1;
+}
+
+/*buttons*/
+
+.btn-likes {
+  background-color: #80BCC6;
+  border: 3px solid #5E9AA2;
+}
+
+.btn-add-comment {
+  background-color: #98C841;
+  border: 3px solid #93B244;
+}
+
+.btn-edit-post {
+  background-color: #EE652F;
+  border: 3px solid: #C65229;
+}
+
+.delete-button {
+  position: absolute;
+  top: 35px;
+  right: 30px;
+}
+
+/*users*/
+
+.user-preview {
+  /*z-index: 100;*/
+  position: absolute;
+  top: 15px;
+  border: 1px solid #5E9AA2;
+  background-color: #F1F1F1;
+}
+
+.user-name {
+  position: relative;
+  width: 300px;
+}

@@ -4,7 +4,13 @@
             {{post.likesCount}} liked this post
         </a>
     </p>
-    <p ng-if="showLikesPreview" show-likes-preview users="likesUsersData"></p>
-    <p ng-if="post.liked"><button ng-click="unlikePost(post.id)">Unlike</button></p>
-    <p ng-if="!post.liked"><button ng-click="likePost(post.id)">Like</button></p>
+    <div ng-if="showLikesPreview" show-likes-preview users="likesUsersData" class="likes-preview"></div>
+    <div>
+        <button ng-click="unlikePost(post.id)" ng-if="post.liked" class="btn btn-likes">
+            <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true">unlike</span>
+        </button>
+        <button ng-click="likePost(post.id)" ng-if="!post.liked" class="btn btn-likes">
+            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true">like</span>
+        </button>
+    </div>
 </div>

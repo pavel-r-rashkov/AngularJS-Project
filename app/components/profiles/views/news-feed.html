@@ -1,7 +1,12 @@
-<h1>News feed</h1>
-<div ng-repeat="post in posts">
-    <div show-post posts-update="showPosts()" post="post"></div>
+<h1 class="col-lg-offset-1">News feed</h1>
+<div class="row">
+    <section class="col-lg-8 col-lg-offset-1">
+        <div ng-repeat="post in posts" show-post posts-update="showPosts()" post="post" class="post"></div>
+        <div ng-show="loadingPosts">Loading posts...</div>
+        <div scroll callback="showPosts" bot-offset="10">friends preview</div>
+    </section>
+    <aside class="col-lg-3">
+        <div show-friends-preview username="username"></div>
+    </aside>
 </div>
-<div ng-show="loadingPosts">Loading posts...</div>
-<div scroll callback="showPosts" bot-offset="10">friends preview</div>
-<div show-friends-preview username="username"></div>
+<!--<div class="clearfix"></div>-->
