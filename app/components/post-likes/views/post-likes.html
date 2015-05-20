@@ -1,16 +1,15 @@
-<div>
-    <p>
-        <a ng-href="#/posts/{{post.id}}/likes" ng-mouseover="toggleLikesPreview()" ng-mouseleave="toggleLikesPreview()">
-            {{post.likesCount}} liked this post
-        </a>
-    </p>
-    <div ng-if="showLikesPreview" show-likes-preview users="likesUsersData" class="likes-preview"></div>
-    <div>
-        <button ng-click="unlikePost(post.id)" ng-if="post.liked" class="btn btn-likes">
-            <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true">unlike</span>
-        </button>
-        <button ng-click="likePost(post.id)" ng-if="!post.liked" class="btn btn-likes">
-            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true">like</span>
-        </button>
-    </div>
+<div class="pull-right">
+    <button ng-click="unlikePost(post.id)" ng-if="post.liked" class="btn btn-likes">
+        <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"> Unlike</span>
+    </button>
+    <button ng-click="likePost(post.id)" ng-if="!post.liked" class="btn btn-likes">
+        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> Like</span>
+    </button>
 </div>
+<div class="pull-right">
+    <a ng-href="#/posts/{{post.id}}/likes" ng-mouseover="toggleLikesPreview()" ng-mouseleave="toggleLikesPreview()" class="likes-count">
+        {{post.likesCount}} liked this post
+        <div ng-if="showLikesPreview" show-likes-preview users="likesUsersData" class="likes-preview"></div>
+    </a>
+</div>
+<div class="clearfix"></div>

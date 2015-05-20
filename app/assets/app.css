@@ -36,7 +36,7 @@ main {
 }
 
 footer {
-
+  background-color: #58585B;
 }
 
 /*navigation*/
@@ -65,6 +65,11 @@ nav ul li {
 .post-content {
   padding: 10px;
   background-color: #F1F1F1;
+  box-shadow: 5px 5px 5px #888888;
+}
+
+.edit-post {
+  border: 2px solid #C65229;
 }
 
 /*comment*/
@@ -73,35 +78,60 @@ nav ul li {
   padding: 10px;
   margin: 10px 0px;
   background-color: #F1F1F1;
+  box-shadow: 5px 5px 5px #888888;
+}
+
+.add-comment {
+  border: 2px solid #93B244;
 }
 
 /*likes*/
+
+.likes {
+  width: 50%;
+}
+
+.likes-count {
+  position: relative;
+  margin: 0px 15px;
+  top: 6px;
+}
 
 .likes-preview {
   z-index: 100;
   position: absolute;
   padding: 5px;
   width: 170px;
-  left: 60px;
+  left: 0px;
   border: 1px solid #5E9AA2;
   background-color: #F1F1F1;
 }
 
 /*buttons*/
 
+.btn {
+
+  border-radius: 0px;
+  color: white;
+}
+
+.btn:focus {
+  outline:0;
+}
+
 .btn-likes {
   background-color: #80BCC6;
-  border: 3px solid #5E9AA2;
+  border: 2px solid #5E9AA2;
 }
 
 .btn-add-comment {
   background-color: #98C841;
-  border: 3px solid #93B244;
+  border: 2px solid #93B244;
 }
 
 .btn-edit-post {
   background-color: #EE652F;
-  border: 3px solid: #C65229;
+  border: 2px solid #C65229;
 }
 
 .delete-button {

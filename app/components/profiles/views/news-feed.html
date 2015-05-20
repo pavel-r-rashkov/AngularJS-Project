@@ -3,10 +3,9 @@
     <section class="col-lg-8 col-lg-offset-1">
         <div ng-repeat="post in posts" show-post posts-update="showPosts()" post="post" class="post"></div>
         <div ng-show="loadingPosts">Loading posts...</div>
-        <div scroll callback="showPosts" bot-offset="10">friends preview</div>
+        <div scroll callback="showPosts" bot-offset="10">scroll</div>
     </section>
     <aside class="col-lg-3">
         <div show-friends-preview username="username"></div>
     </aside>
 </div>
-<!--<div class="clearfix"></div>-->
