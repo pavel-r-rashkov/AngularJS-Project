@@ -1,8 +1,13 @@
-<div>
-    <h1>Friends preview: </h1>
-    <p>Total: {{totalCount}}</p>
-    <p><a ng-href="#/{{username}}/friends">All</a></p>
-    <div ng-repeat="friend in friends">
-        <p>{{friend.username}}</p>
+<div class="friends-preview">
+    <div class="friends-preview-header">Friends</div>
+    <div class="friends-preview-main">
+        <p class="pull-left">Total: {{totalCount}}</p>
+        <p class="pull-right"><a ng-href="#/{{username}}/friends">Show all</a></p>
+        <div class="clearfix"></div>
+        <div ng-repeat="friend in friends" class="friends-preview-image col-lg-4">
+            <span>{{friend.username}}</span>
+            <img ng-src="{{friend.profileImageData | noImage}}">
+        </div>
+        <div class="clearfix"></div>
     </div>
 </div>

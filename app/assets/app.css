@@ -138,6 +138,10 @@ footer {
   margin-top: 25px;
 }
 
+.post:first-child {
+  margin-top: 0px;
+}
+
 .post-main {
   background-color: #E9E9E9;
   padding: 10px;
@@ -280,4 +284,35 @@ footer {
   height: 60px;
 }
 
+/*friends preview*/
+
+.friends-preview-main {
+  background-color: #E9E9E9;
+  padding: 10px;
+}
+
+.friends-preview-header {
+  padding: 5px;
+  height: 25px;
+  color: white;
+  background-color: #58585B;
+}
+
+.friends-preview-image {
+  /*height: 60px;*/
+  padding: 0px;
+}
+
+.friends-preview-image span {
+  position: absolute;
+  color: black;
+  bottom: 0px;
+  left: 5px;
+}
+
+.friends-preview-image img {
+  /*height: 60px;*/
+  width: 100%;
+  overflow: hidden;
+}
 

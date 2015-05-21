@@ -11,7 +11,7 @@ angular.module('profilesModule')
                 console.log('error loading user data');
             });
 
-        $scope.editProfile = function(userData) {
+        $scope.editProfile = function(userData) {;
             profilesService.editProfile(userData)
                 .then(
                 function(data) {
@@ -19,6 +19,7 @@ angular.module('profilesModule')
                     $location.path('/view1');
                 },
                 function(error) {
+                    console.log(error);
                     console.log('error editing profile');
                 });
         };
