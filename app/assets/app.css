@@ -74,6 +74,32 @@ footer {
   margin-right: 5px;
 }
 
+.friend-request {
+  padding: 5px;
+}
+
+.friend-request>div>div:nth-child(2) {
+  margin-top: 5px;
+}
+
+.friend-request .btn {
+  margin-top: 2px;
+  padding: 2px 6px;
+}
+
+.friend-request .nav-profile-image {
+  top: 0px;
+}
+
+
+.users-search-results .nav-profile-image {
+  top: 0px;
+}
+
+.users-search-results>div {
+  padding: 5px;
+}
+
 .nav-profile-image img {
   height: 30px;
   width: 100%;
@@ -118,6 +144,7 @@ footer {
   padding: 10px;
   background-color: #F1F1F1;
   box-shadow: 5px 5px 5px #888888;
+  margin-bottom: 5px;
 }
 
 .edit-post {
@@ -128,7 +155,7 @@ footer {
 
 .comment {
   padding: 10px;
-  margin: 10px 0px;
+  margin: 5px 0px;
   background-color: #F1F1F1;
   box-shadow: 5px 5px 5px #888888;
 }
@@ -162,28 +189,29 @@ footer {
 /*buttons*/
 
 .btn {
-
   border-radius: 0px;
-  color: white;
 }
 
 .btn:focus {
   outline:0;
 }
 
-.btn-likes {
+.btn-blue {
   background-color: #80BCC6;
   border: 2px solid #5E9AA2;
+  color: white;
 }
 
-.btn-add-comment {
+.btn-green {
   background-color: #98C841;
   border: 2px solid #93B244;
+  color: white;
 }
 
-.btn-edit-post {
+.btn-orange {
   background-color: #EE652F;
   border: 2px solid #C65229;
+  color: white;
 }
 
 .delete-button {

@@ -1,10 +1,18 @@
-<div>
-    <div ng-repeat="request in requests">
-        <div>
-            {{request.user.username}} send you a friend request...
-            <button ng-click="approveRequest(request.id)">Approve</button>
-            <button ng-click="rejectRequest(request.id)">Reject</button>
+<div ng-repeat="request in requests" class="friend-request">
+    <div>
+        <div class="nav-profile-image pull-left">
+            <img ng-src="{{request.user.profileImageData}}">
         </div>
+        <div class="pull-left">{{request.user.username}}</div>
+        <div class="pull-right">
+            <button ng-click="approveRequest(request.id)" class="btn btn-green">
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            </button>
+            <button ng-click="rejectRequest(request.id)" class="btn btn-orange">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </button>
+        </div>
+        <div class="clearfix"></div>
     </div>
-    total: {{requestsCount.count}}
 </div>
+<div>total: {{requestsCount.count}}</div>

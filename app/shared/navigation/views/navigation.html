@@ -24,9 +24,13 @@
             <li><a ng-click="logout()">logout</a></li>
             <li>
                 <input ng-model="search.searchTerm" ng-change="loadUsers()" placeholder="Search..." class="users-search"/>
-                <div class="users-search-results">
+                <div ng-show="users.length > 0" class="users-search-results">
                     <div ng-repeat="user in users">
-                        <a ng-href="#/{{user.username}}/wall">{{user.name}}</a>
+                        <div class="nav-profile-image pull-left">
+                            <img ng-src="{{user.profileImageData}}">
+                        </div>
+                        <a ng-href="#/{{user.username}}/wall" class="pull-left">{{user.name}}</a>
+                        <div class="clearfix"></div>
                     </div>
                 </div>
             </li>
