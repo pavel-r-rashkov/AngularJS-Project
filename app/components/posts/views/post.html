@@ -1,16 +1,18 @@
 <div class="post-content">
     <div>
-        <div>
-            <span>{{post.author.profileImageData}}</span>
-            <!--<img ng-src="data:image/jpeg;base64,{{post.author.profileImageData}}">-->
+        <div class="profile-image pull-left">
+            <img ng-src="{{post.author.profileImageData}}">
         </div>
-        <div ng-mouseover="toggleUserPreview()" ng-mouseleave="toggleUserPreview()" class="user-name">
-            {{post.author.username}}
+        <div ng-mouseover="toggleUserPreview()" ng-mouseleave="toggleUserPreview()" class="user-name pull-left">
+            <span>{{post.author.name}}</span><br>
+            <span>{{post.author.username}}</span>
             <div ng-if="userPreviewActive" class="user-preview" show-user-preview username="post.author.username"></div>
         </div>
+        <div class="clearfix"></div>
     </div>
 
-    <p>{{post.date | date:'yyyy-MM-dd HH:mm'}}</p>
+    <div class="pull-right">{{post.date | date:'yyyy-MM-dd HH:mm'}}</div>
+    <div class="clearfix"></div>
     <p>{{post.postContent}}</p>
     <div show-post-likes post="post" class="likes pull-right"></div>
 

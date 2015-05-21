@@ -41,17 +41,69 @@ footer {
 
 /*navigation*/
 
-nav ul li {
-
+.navbar-collapse {
+  margin-top: 9px;
 }
+
+.navbar {
+  background-color: #404041;
+}
+
+.navbar ul li {
+  padding-bottom: 10px;
+}
+
+.navbar ul li:first-child {
+  padding-bottom: 0px;
+}
+
+.active-tab {
+  border-bottom: 2px solid #C65229;
+}
+
+.navbar ul li a {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.nav-profile-image {
+  position: relative;
+  top: -4px;
+  height: 30px;
+  width: 30px;
+  margin-right: 5px;
+}
+
+.nav-profile-image img {
+  height: 30px;
+  width: 100%;
+  overflow: hidden;
+}
+
 
 .friend-requests {
   position: absolute;
+  top: 40px;
+  width: 200px;
+  background-color: #F1F1F1;
+  border: 2px solid #C65229;
 
 }
 
-.users-search {
+.users-search-results {
   position: absolute;
+  top: 40px;
+  width: 175px;
+  background-color: #F1F1F1;
+  border: 2px solid #5E9AA2;
+}
+
+.users-search {
+  height: 30px;
+  margin-top: 1px;
+  border: none;
+  border-radius: 5px;
+  padding-left: 5px;
 }
 
 /*posts*/
@@ -143,7 +195,6 @@ nav ul li {
 /*users*/
 
 .user-preview {
-  /*z-index: 100;*/
   position: absolute;
   top: 15px;
   border: 1px solid #5E9AA2;
@@ -151,6 +202,20 @@ nav ul li {
 }
 
 .user-name {
+  margin-left: 15px;
   position: relative;
   width: 300px;
 }
+
+.profile-image img {
+  height: 60px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.profile-image {
+  width: 60px;
+  height: 60px;
+}
+
+

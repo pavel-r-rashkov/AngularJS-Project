@@ -1,28 +1,35 @@
-<nav ng-controller="navigationController">
-    <ul ng-if="getLoggedIn()" class="nav nav-pills navbar-fixed-top" role="navigation">
-        <li>
-            <a ng-href="#/{{getCurrentUserData().username}}/wall">
-                <img ng-src="data:image/jpeg;base64,{{getCurrentUserData().profileImageData}}"/>
-                {{getCurrentUserData().name}}
-            </a>
-        </li>
-        <li><a ng-href="#/profile/feed">news feed</a></li>
-        <li>
-            <a ng-click="toggleRequests()">requests {{requestsCount.count}}</a>
-            <div ng-if="requestsActive" class="friend-requests">
-                <div show-friend-requests requests="requests" requests-count="requestsCount"></div>
-            </div>
-        </li>
-        <li><a ng-href="#/profile/edit">edit profile</a></li>
-        <li><a ng-href="#/profile/changepassword">change password</a></li>
-        <li><a ng-click="logout()">logout</a></li>
-        <li>
-            <input ng-model="search.searchTerm" ng-change="loadUsers()" placeholder="Search..."/>
-            <div class="users-search">
-                <div ng-repeat="user in users">
-                    <a ng-href="#/{{user.username}}/wall">{{user.name}}</a>
+<nav ng-controller="navigationController" class="navbar navbar-default navbar-fixed-top">
+    <div class="collapse navbar-collapse">
+        <ul ng-if="getLoggedIn()" class="nav navbar-nav">
+            <li>
+                <a ng-href="#/{{getCurrentUserData().username}}/wall">
+                    <div class="nav-profile-image pull-left">
+                        <img ng-src="{{getCurrentUserData().profileImageData}}"/>
+                    </div>
+                    <div class="pull-right">
+                        {{getCurrentUserData().name}}
+                    </div>
+                    <div class="clearfix"></div>
+                </a>
+            </li>
+            <li><a ng-href="#/profile/feed">news feed</a></li>
+            <li>
+                <a ng-click="toggleRequests()">requests {{requestsCount.count}}</a>
+                <div ng-if="requestsActive" class="friend-requests">
+                    <div show-friend-requests requests="requests" requests-count="requestsCount"></div>
                 </div>
-            </div>
-        </li>
-    </ul>
+            </li>
+            <li class="active-tab"><a ng-href="#/profile/edit">edit profile</a></li>
+            <li><a ng-href="#/profile/changepassword">change password</a></li>
+            <li><a ng-click="logout()">logout</a></li>
+            <li>
+                <input ng-model="search.searchTerm" ng-change="loadUsers()" placeholder="Search..." class="users-search"/>
+                <div class="users-search-results">
+                    <div ng-repeat="user in users">
+                        <a ng-href="#/{{user.username}}/wall">{{user.name}}</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
 </nav>
