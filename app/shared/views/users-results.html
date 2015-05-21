@@ -1,6 +1,13 @@
-<input ng-model="usersFilter.name"/>
-<div ng-repeat="user in users | filter:usersFilter">
-    <p>{{user.username}}</p>
-    <p>{{user.name}}</p>
-    <p>{{user.gender | digitToGender}}</p>
+<input ng-model="usersFilter.name"/><br>
+<div class="users-results-wrapper">
+    <div ng-repeat="user in users | filter:usersFilter" class="col-lg-6 users-result">
+        <div class="users-results-image pull-left"><img ng-src="{{user.profileImageData}}"></div>
+        <div class="pull-left">
+            <div>{{user.username}}</div>
+            <div>{{user.name}}</div>
+        </div>
+        <div class="pull-right">{{user.gender | digitToGender}}</div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
 </div>

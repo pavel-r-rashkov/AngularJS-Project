@@ -17,7 +17,11 @@
 <div ng-repeat="post in posts">
     <div show-post post="post" posts="posts"></div>
 </div>
-<div ng-show="loadingPosts">Loading posts...</div>
+<div class="loading-wrapper">
+    <div ng-show="loadingPosts">
+            <div class="loading"></div>
+    </div>
+</div>
 <div ng-if="showAddPost" new-post posts="posts" wall-owner="username"></div>
 <div scroll callback="showPosts" bot-offset="10">
     friends preview
