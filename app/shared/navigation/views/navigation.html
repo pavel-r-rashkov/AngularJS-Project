@@ -14,7 +14,7 @@
             </li>
             <li><a ng-href="#/profile/feed">news feed</a></li>
             <li>
-                <a ng-click="toggleRequests()">requests {{requestsCount.count}}</a>
+                <a ng-click="toggleRequests()">requests <span class="badge">{{requestsCount.count}}</span></a>
                 <div ng-if="requestsActive" class="friend-requests">
                     <div show-friend-requests requests="requests" requests-count="requestsCount"></div>
                 </div>

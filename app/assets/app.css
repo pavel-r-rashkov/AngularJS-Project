@@ -135,9 +135,19 @@ footer {
 /*posts*/
 
 .post {
+  margin-top: 25px;
+}
+
+.post-main {
   background-color: #E9E9E9;
   padding: 10px;
-  margin-top: 25px;
+}
+
+.post-header {
+  padding: 5px;
+  height: 25px;
+  color: white;
+  background-color: #58585B;
 }
 
 .post-content {
@@ -151,6 +161,18 @@ footer {
   border: 2px solid #C65229;
 }
 
+.edit-post form {
+  height: 60px;
+}
+
+.edit-post button {
+  height: 100%;
+}
+
+.edit-post textarea {
+  height: 100%;
+}
+
 /*comment*/
 
 .comment {
@@ -162,6 +184,18 @@ footer {
 
 .add-comment {
   border: 2px solid #93B244;
+}
+
+.add-comment form {
+  height: 60px;
+}
+
+.add-comment button {
+  height: 100%;
+}
+
+.add-comment textarea {
+  height: 100%;
 }
 
 /*likes*/
@@ -182,7 +216,7 @@ footer {
   padding: 5px;
   width: 170px;
   left: 0px;
-  border: 1px solid #5E9AA2;
+  border: 2px solid #5E9AA2;
   background-color: #F1F1F1;
 }
 
@@ -216,7 +250,7 @@ footer {
 
 .delete-button {
   position: absolute;
-  top: 35px;
+  top: 65px;
   right: 30px;
 }
 

@@ -1,46 +1,49 @@
-<div class="post-content">
-    <div>
-        <div class="profile-image pull-left">
-            <img ng-src="{{post.author.profileImageData}}">
+<div class="post-header">{{postTitle}}</div>
+<div class="post-main">
+    <div class="post-content">
+        <div>
+            <div class="profile-image pull-left">
+                <img ng-src="{{post.author.profileImageData}}">
+            </div>
+            <div ng-mouseover="toggleUserPreview()" ng-mouseleave="toggleUserPreview()" class="user-name pull-left">
+                <span>{{post.author.name}}</span><br>
+                <span>{{post.author.username}}</span>
+                <div ng-if="userPreviewActive" class="user-preview" show-user-preview username="post.author.username"></div>
+            </div>
+            <div class="clearfix"></div>
         </div>
-        <div ng-mouseover="toggleUserPreview()" ng-mouseleave="toggleUserPreview()" class="user-name pull-left">
-            <span>{{post.author.name}}</span><br>
-            <span>{{post.author.username}}</span>
-            <div ng-if="userPreviewActive" class="user-preview" show-user-preview username="post.author.username"></div>
-        </div>
+
+        <div class="pull-right">{{post.date | date:'yyyy-MM-dd HH:mm'}}</div>
         <div class="clearfix"></div>
+        <p>{{post.postContent}}</p>
+        <div show-post-likes post="post" class="likes pull-right"></div>
+
+        <button type="button" class="close delete-button" data-dismiss="alert" aria-label="Close" ng-click="deletePost(post.id)">
+            <span aria-hidden="true">&times;</span>
+        </button>
+
+        <button ng-click="toggleCommentForm()" class="btn btn-green">
+            <span ng-show="showAddForm">Hide form</span>
+            <span ng-show="!showAddForm">Add comment</span>
+        </button>
+
+        <button ng-click="togglePostEditForm()" class="btn btn-orange">
+            <span ng-show="showEditForm">Hide form</span>
+            <span ng-show="!showEditForm">Edit post</span>
+        </button>
+
+        <div ng-if="showAddForm" new-comment post-id="post.id" comments="post.comments" comments-count="post.totalCommentsCount" class="add-comment"></div>
+        <div ng-if="showEditForm" edit-post post="post" class="edit-post"></div>
+
+        <div>Comments count: {{post.totalCommentsCount}}</div>
     </div>
 
-    <div class="pull-right">{{post.date | date:'yyyy-MM-dd HH:mm'}}</div>
+    <div ng-repeat="comment in post.comments" show-comment comment="comment" post-id="post.id"
+         comments="post.comments" comments-count="post.totalCommentsCount" class="comment col-lg-11 pull-right">
+    </div>
     <div class="clearfix"></div>
-    <p>{{post.postContent}}</p>
-    <div show-post-likes post="post" class="likes pull-right"></div>
 
-    <button type="button" class="close delete-button" data-dismiss="alert" aria-label="Close" ng-click="deletePost(post.id)">
-        <span aria-hidden="true">&times;</span>
-    </button>
-
-    <button ng-click="toggleCommentForm()" class="btn btn-green">
-        <span ng-show="showAddForm">Hide form</span>
-        <span ng-show="!showAddForm">Add comment</span>
-    </button>
-
-    <button ng-click="togglePostEditForm()" class="btn btn-orange">
-        <span ng-show="showEditForm">Hide form</span>
-        <span ng-show="!showEditForm">Edit post</span>
-    </button>
-
-    <div ng-show="showAddForm" new-comment post-id="post.id" comments="post.comments" comments-count="post.totalCommentsCount" class="add-comment"></div>
-    <div ng-if="showEditForm" edit-post post="post" class="edit-post"></div>
-
-    <div>Comments count: {{post.totalCommentsCount}}</div>
-</div>
-
-<div ng-repeat="comment in post.comments" show-comment comment="comment" post-id="post.id"
-     comments="post.comments" comments-count="post.totalCommentsCount" class="comment col-lg-11 pull-right">
-</div>
-<div class="clearfix"></div>
-
-<div ng-show="!allCommentsShown()">
-    <button ng-click="toggleShowComments()">Show all comments</button>
+    <div ng-show="!allCommentsShown()">
+        <button ng-click="toggleShowComments()">Show all comments</button>
+    </div>
 </div>

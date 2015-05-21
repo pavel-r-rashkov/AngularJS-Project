@@ -13,6 +13,11 @@ angular.module('postsModule').directive('showPost', function () {
                 return $scope.post.totalCommentsCount == $scope.post.comments.length;
             };
 
+            $scope.postTitle = $scope.post.author.name + ' posted';
+            if($scope.post.author.username !== $scope.post.wallOwner.username) {
+                $scope.postTitle += ' on ' + $scope.post.wallOwner.name + '\'s wall';
+            }
+
             $scope.deletePost = function(postId) {
                 postsService.deletePost(postId)
                     .then(
@@ -25,10 +30,12 @@ angular.module('postsModule').directive('showPost', function () {
             };
 
             $scope.toggleCommentForm = function() {
+                $scope.showEditForm = false;
                 $scope.showAddForm = !$scope.showAddForm;
             };
 
             $scope.togglePostEditForm = function() {
+                $scope.showAddForm = false;
                 $scope.showEditForm = !$scope.showEditForm;
             };
 

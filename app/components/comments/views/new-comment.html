@@ -1,4 +1,7 @@
 <form>
-    <textarea ng-model="comment.commentContent"></textarea>
-    <input type="submit" ng-click="addComment(comment)"/>
+    <textarea ng-model="comment.commentContent" class="col-lg-11"></textarea>
+    <button ng-click="addComment(comment)" class="col-lg-1 btn btn-green">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    </button>
+    <div class="clearfix"></div>
 </form>

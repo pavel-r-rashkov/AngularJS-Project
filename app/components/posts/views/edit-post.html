@@ -1,7 +1,7 @@
-<div>
-    <h3>Edit post: </h3>
-    <form>
-        <textarea ng-model="editedPost.postContent"></textarea>
-        <input type="submit" ng-click="editPost(editedPost)"/>
-    </form>
-</div>
+<form>
+    <textarea ng-model="editedPost.postContent" class="col-lg-11"></textarea>
+    <button ng-click="editPost(editedPost)" class="col-lg-1 btn btn-orange">
+        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+    </button>
+    <div class="clearfix"></div>
+</form>
