@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('profilesModule')
-    .controller('newsFeedController', function($scope, profilesService, notyService) {
-        $scope.username = localStorage['username'];
+    .controller('newsFeedController', function($scope, profilesService, notyService, credentialsService) {
+        $scope.username = credentialsService.getCurrentUser().username;
         $scope.posts = [];
         $scope.lastPostId;
         $scope.loadingPosts = false;

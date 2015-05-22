@@ -20,7 +20,7 @@ angular.module('usersModule')
                 .then(
                 function(data) {
                     setLocalUserData(data);
-                    $location.path('/view1');
+                    $location.path('/' + user.username + '/wall');
                     notyService.success('successfully registered');
                 },
                 function() {

@@ -4,7 +4,7 @@ angular.module('navigationModule')
         $scope.search = {};
 
         $scope.getLoggedIn = function() {
-            return localStorage['sessionToken'] !== undefined;
+            return credentialsService.isLogged();
         };
 
         $scope.getCurrentUserData = function() {

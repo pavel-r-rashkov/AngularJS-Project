@@ -3,8 +3,8 @@ angular.module('myApp')
         function getConfig() {
             var config = {};
             config.headers = {};
-            if(localStorage['sessionToken']) {
-                config.headers.Authorization = 'Bearer ' + localStorage['sessionToken'];
+            if(sessionStorage['sessionToken']) {
+                config.headers.Authorization = 'Bearer ' + sessionStorage['sessionToken'];
             }
 
             return config;
@@ -12,34 +12,34 @@ angular.module('myApp')
 
         function getCurrentUser() {
             return {
-                username: localStorage['username'],
-                name: localStorage['name'],
-                profileImageData: localStorage['profileImageData']
+                username: sessionStorage['username'],
+                name: sessionStorage['name'],
+                profileImageData: sessionStorage['profileImageData']
             }
         }
 
         function deleteUserData() {
-            delete localStorage['username'];
-            delete localStorage['sessionToken'];
-            delete localStorage['name'];
-            delete localStorage['profileImageData'];
-            delete localStorage['sessionToken'];
+            delete sessionStorage['username'];
+            delete sessionStorage['sessionToken'];
+            delete sessionStorage['name'];
+            delete sessionStorage['profileImageData'];
+            delete sessionStorage['sessionToken'];
         }
 
         function setCurrentUser(name, profileImageData, username) {
             if(username) {
-                localStorage['username'] = username;
+                sessionStorage['username'] = username;
             }
-            localStorage['name'] = name;
-            localStorage['profileImageData'] = profileImageData;
+            sessionStorage['name'] = name;
+            sessionStorage['profileImageData'] = profileImageData;
         }
 
         function setAccessToken(token) {
-            localStorage['sessionToken'] = token;
+            sessionStorage['sessionToken'] = token;
         }
 
         function isLogged() {
-            return !!localStorage['sessionToken'];
+            return !!sessionStorage['sessionToken'];
         }
 
         return {

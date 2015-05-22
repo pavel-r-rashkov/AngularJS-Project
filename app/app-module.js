@@ -11,12 +11,14 @@ angular.module('myApp', [
     'postLikesModule',
     'profilesModule',
     'navigationModule'
-]).config(['$routeProvider', function($routeProvider) {
-    $routeProvider.otherwise({redirectTo: '/view1'});
-}]).run(function($rootScope, $location) {
+])
+.config(['$routeProvider', function($routeProvider) {
+    $routeProvider.otherwise({redirectTo: '/home'});
+}])
+.run(function($rootScope, $location) {
     $rootScope.$on("$locationChangeStart", function(event) {
-        if((localStorage['sessionToken'] && $location.path() === '/home') ||
-            (!localStorage['sessionToken'] && $location.path() !== '/home')) {
+        if((sessionStorage['sessionToken'] && $location.path() === '/home') ||
+            (!sessionStorage['sessionToken'] && $location.path() !== '/home')) {
             event.preventDefault();
         }
     });

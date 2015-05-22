@@ -4,10 +4,11 @@ angular.module('friendsModule').directive('showFriendsPreview', function () {
             username: '=username'
         },
         templateUrl: 'components/friends/views/friends-preview.html',
-        controller: function ($scope, friendsService, notyService) {
+        controller: function ($scope, friendsService, notyService, credentialsService) {
             var username = $scope.username;
+            var currentUsername = credentialsService.getCurrentUser().username;
 
-            if(username === localStorage['username']) {
+            if(username === currentUsername) {
                 friendsService.getMyFriendsPreview()
                     .then(
                     function(data) {
