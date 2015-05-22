@@ -2,21 +2,24 @@ angular.module('commentsModule').directive('showComment', function () {
     return {
         scope: {
             comment: '=comment',
-            postId: '=postId',
-            comments: '=comments',
-            commentsCount: '=commentsCount'
+            post: '=post'
         },
         templateUrl: 'components/comments/views/comment.html',
-        controller: function ($scope, $element, $attrs, commentsService) {
+        controller: function ($scope, $element, $attrs, commentsService, credentialsService) {
+            var currentUsername = credentialsService.getCurrentUser().username;
             $scope.userPreviewActive = false;
             $scope.showCommentEditForm = false;
+
+            $scope.canEditComment = currentUsername === $scope.comment.author.username;
+            $scope.canDeleteComment = (currentUsername === $scope.post.author.username) ||
+                $scope.comment.author.username === currentUsername;
 
             $scope.deleteComment = function(postId, commentId) {
                 commentsService.deleteComment(postId, commentId)
                     .then(
                     function() {
-                        $scope.commentsCount--;
-                        $scope.comments = $scope.comments.filter(function(element) {return element.id !== commentId;});
+                        $scope.post.totalCommentsCount--;
+                        $scope.post.comments = $scope.post.comments.filter(function(element) {return element.id !== commentId;});
                     },
                     function() {
                         console.log('error deleting comment');

@@ -2,14 +2,20 @@ angular.module('commentLikesModule').directive('showCommentLikes', function () {
     return {
         scope: {
             comment: '=comment',
-            postId: '=postId'
+            post: '=post'
         },
         templateUrl: 'components/comment-likes/views/comment-likes.html',
-        controller: function ($scope, $element, $attrs, commentLikesService) {
+        controller: function ($scope, $element, $attrs, commentLikesService, credentialsService) {
             $scope.showLikesPreview = false;
 
+            var currentUsername = credentialsService.getCurrentUser().username;
+            $scope.canLike = (currentUsername === $scope.post.author.username) ||
+                $scope.post.wallOwner.username === currentUsername ||
+                $scope.post.wallOwner.isFriend ||
+                $scope.post.author.isFriend;
+
             $scope.likeComment = function(commentId) {
-                commentLikesService.likeComment($scope.postId, commentId)
+                commentLikesService.likeComment($scope.post.id, commentId)
                     .then(
                     function(data) {
                         $scope.comment.liked = true;
@@ -21,7 +27,7 @@ angular.module('commentLikesModule').directive('showCommentLikes', function () {
             };
 
             $scope.unlikeComment = function(commentId) {
-                commentLikesService.unlikeComment($scope.postId, commentId)
+                commentLikesService.unlikeComment($scope.post.id, commentId)
                     .then(
                     function(data) {
                         $scope.comment.liked = false;
@@ -49,7 +55,7 @@ angular.module('commentLikesModule').directive('showCommentLikes', function () {
             $scope.toggleLikesPreview = function() {
                 $scope.showLikesPreview = !$scope.showLikesPreview;
                 if($scope.showLikesPreview) {
-                    loadLikesPreview($scope.postId, $scope.comment.id);
+                    loadLikesPreview($scope.post.id, $scope.comment.id);
                 }
             };
 

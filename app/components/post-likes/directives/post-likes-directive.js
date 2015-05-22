@@ -1,12 +1,16 @@
 angular.module('postLikesModule').directive('showPostLikes', function () {
     return {
         scope: {
-            post: '=post',
-            canLike: '=canLike'
+            post: '=post'
         },
         templateUrl: 'components/post-likes/views/post-likes.html',
-        controller: function ($scope, $element, $attrs, postLikesService) {
+        controller: function ($scope, $element, $attrs, postLikesService, credentialsService) {
             $scope.showLikesPreview = false;
+            var currentUsername = credentialsService.getCurrentUser().username;
+            $scope.canLike = (currentUsername === $scope.post.author.username) ||
+                $scope.post.wallOwner.username === currentUsername ||
+                $scope.post.wallOwner.isFriend ||
+                $scope.post.author.isFriend;
 
             $scope.likePost = function(postId) {
                 postLikesService.likePost(postId)

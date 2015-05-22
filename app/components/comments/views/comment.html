@@ -1,15 +1,14 @@
+<p ng-mouseover="toggleUserPreview()" ng-mouseleave="toggleUserPreview()">{{comment.authorUsername}}</p>
+<div ng-if="userPreviewActive"><div show-user-preview username="comment.authorUsername"></div></div>
+<p>{{comment.date | date:'yyyy-MM-dd HH:mm'}}</p>
+<p>{{comment.commentContent}}</p>
+<div show-comment-likes comment="comment" post="post"></div>
+<button ng-if="canDeleteComment" ng-click="deleteComment(post.id, comment.id)">Delete comment</button>
 
-    <p ng-mouseover="toggleUserPreview()" ng-mouseleave="toggleUserPreview()">{{comment.authorUsername}}</p>
-    <div ng-if="userPreviewActive"><div show-user-preview username="comment.authorUsername"></div></div>
-    <p>{{comment.date | date:'yyyy-MM-dd HH:mm'}}</p>
-    <p>{{comment.commentContent}}</p>
-    <div show-comment-likes comment="comment" post-id="postId"></div>
-    <button ng-click="deleteComment(postId, comment.id)">Delete comment</button>
-
-    <button ng-click="toggleCommentEditForm()">
-        <span ng-show="showCommentEditForm">Hide form</span>
-        <span ng-show="!showCommentEditForm">Edit comment</span>
-    </button>
-    <div ng-if="showCommentEditForm">
-        <div edit-comment comment="comment" post-id="postId"></div>
-    </div>
+<button ng-if="canEditComment" ng-click="toggleCommentEditForm()">
+    <span ng-show="showCommentEditForm">Hide form</span>
+    <span ng-show="!showCommentEditForm">Edit comment</span>
+</button>
+<div ng-if="showCommentEditForm">
+    <div edit-comment comment="comment" post-id="post.id"></div>
+</div>

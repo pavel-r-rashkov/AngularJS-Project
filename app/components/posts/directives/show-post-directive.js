@@ -10,13 +10,14 @@ angular.module('postsModule').directive('showPost', function () {
             $scope.showAddForm = false;
             $scope.showEditForm = false;
             $scope.userPreviewActive = false;
-            $scope.canEditPost = currentUsername === $scope.post.author.username;
-            $scope.canDeletePost = (currentUsername === $scope.post.author.username) ||
-                $scope.post.wallOwner.username === currentUsername;
-            $scope.canLike = (currentUsername === $scope.post.author.username) ||
+
+            $scope.canComment = (currentUsername === $scope.post.author.username) ||
                 $scope.post.wallOwner.username === currentUsername ||
                 $scope.post.wallOwner.isFriend ||
                 $scope.post.author.isFriend;
+            $scope.canEditPost = currentUsername === $scope.post.author.username;
+            $scope.canDeletePost = (currentUsername === $scope.post.author.username) ||
+                $scope.post.wallOwner.username === currentUsername;
 
             $scope.allCommentsShown = function() {
                 return $scope.post.totalCommentsCount == $scope.post.comments.length;
@@ -56,9 +57,7 @@ angular.module('postsModule').directive('showPost', function () {
                 postsService.getPostComments($scope.post.id)
                     .then(
                     function(data) {
-                        var comments = data['data'];
-                        comments.reverse();
-                        $scope.post.comments = comments;
+                        $scope.post.comments = data['data'];
                     },
                     function() {
                         console.log('error getting all comments');

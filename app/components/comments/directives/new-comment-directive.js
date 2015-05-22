@@ -14,7 +14,7 @@ angular.module('commentsModule').directive('newComment', function () {
                     function(data) {
                         $scope.comment.commentContent = '';
                         if($scope.commentsCount <= 2 || $scope.comments.length >= 4) {
-                            $scope.comments.push(data['data']);
+                            $scope.comments.unshift(data['data']);
                         }
                         $scope.commentsCount++;
                     },
