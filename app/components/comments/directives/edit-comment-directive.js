@@ -5,7 +5,7 @@ angular.module('commentsModule').directive('editComment', function () {
             postId: '=postId'
         },
         templateUrl: 'components/comments/views/edit-comment.html',
-        controller: function ($scope, $element, $attrs, commentsService) {
+        controller: function ($scope, commentsService, notyService) {
 
             $scope.editedComment = {
                 commentContent: $scope.comment.commentContent
@@ -16,10 +16,10 @@ angular.module('commentsModule').directive('editComment', function () {
                     .then(
                     function(data) {
                         $scope.comment.commentContent = data['data']['commentContent'];
+                        notyService.success('comment edited successfully');
                     },
                     function(error) {
-                        console.log(error);
-                        console.log('error editing comment');
+                        notyService.error('error editing comment');
                     });
             }
         }

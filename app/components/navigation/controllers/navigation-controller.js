@@ -1,5 +1,5 @@
 angular.module('navigationModule', [])
-    .controller('navigationController', ['$scope', 'friendsService', 'usersService', 'credentialsService', '$location', function($scope, friendsService, usersService, credentialsService, $location) {
+    .controller('navigationController', function($scope, friendsService, usersService, credentialsService, $location, notyService) {
         $scope.requestsActive = false;
         $scope.search = {};
 
@@ -31,8 +31,8 @@ angular.module('navigationModule', [])
                     $scope.requestsCount = {count: data['data'].length};
                     $scope.requests = data['data'];
                 },
-                function() {
-                    console.log('error getting friend requests');
+                function(error) {
+                    notyService.error('error getting friend requests');
                 });
         }
 
@@ -47,7 +47,7 @@ angular.module('navigationModule', [])
                     $scope.users = data['data'];
                 },
                 function() {
-                    console.log('error getting user results');
+                    notyService.error('error getting user results');
                 });
         };
 
@@ -56,10 +56,11 @@ angular.module('navigationModule', [])
                 .then(
                 function() {
                     credentialsService.deleteCurrentUserData();
+                    notyService.success('logged out');
                     $location.path('/home');
                 },
-                function() {
-                    console.log('error logging out');
+                function(error) {
+                    notyService.error('error logging out');
                 });
         }
-    }]);
+    });

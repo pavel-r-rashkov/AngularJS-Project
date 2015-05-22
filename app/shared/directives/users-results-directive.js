@@ -4,7 +4,7 @@ angular.module('myApp').directive('showUsersResults', function () {
             users: '=users'
         },
         templateUrl: 'shared/views/users-results.html',
-        controller: function ($scope, $element, $attrs) {
+        controller: function ($scope) {
 
         }
     };

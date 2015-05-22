@@ -4,7 +4,7 @@ angular.module('usersModule').directive('showUserPreview', function () {
             username: '=username'
         },
         templateUrl: 'components/users/views/user-preview.html',
-        controller: function ($scope, $element, $attrs, usersService, friendsService, credentialsService) {
+        controller: function ($scope, usersService, friendsService, credentialsService, notyService) {
             var currentUsername = credentialsService.getCurrentUser().username;
 
             usersService.getUserPreviewData($scope.username)
@@ -15,18 +15,18 @@ angular.module('usersModule').directive('showUserPreview', function () {
                     $scope.friendStatus = data['data']['isFriend'] ? 'friend' : $scope.friendStatus;
                     $scope.friendStatus = $scope.username === currentUsername ? '': $scope.friendStatus;
                 },
-                function() {
-                    console.log('error getting user preview data');
+                function(error) {
+                    notyService.error('error getting user preview data');
                 });
 
             $scope.sendFriendRequest = function(username) {
                 friendsService.sendFriendRequest(username)
                     .then(
                     function(data) {
-                        console.log('request sent');
+                        notyService.success('request sent');
                     },
-                    function() {
-                        console.log('error sending friend request');
+                    function(error) {
+                        notyService.error('error sending friend request');
                     });
             }
 

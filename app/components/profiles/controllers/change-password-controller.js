@@ -1,15 +1,16 @@
 'use strict';
 
 angular.module('profilesModule')
-    .controller('changePasswordController', ['$scope', 'profilesService', '$location', function($scope, profilesService, $location) {
+    .controller('changePasswordController', function($scope, profilesService, $location, notyService) {
         $scope.changePassword = function(passwordData) {
             profilesService.changePassword(passwordData)
                 .then(
                 function() {
+                    notyService.success('password changed');
                     $location.path('/view1');
                 },
-                function() {
-                    console.log('error changing password');
+                function(error) {
+                    notyService.error('error changing password');
                 });
         }
-    }]);
+    });

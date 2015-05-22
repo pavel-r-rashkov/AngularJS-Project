@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('profilesModule')
-    .controller('editProfileController', ['$scope', 'profilesService', 'credentialsService', '$location', function($scope, profilesService, credentialsService, $location) {
+    .controller('editProfileController', function($scope, profilesService, credentialsService, $location, notyService) {
         profilesService.getMyData()
             .then(
             function(data) {
                 $scope.user = data['data'];
             },
             function() {
-                console.log('error loading user data');
+                notyService.error('error loading user data');
             });
 
         $scope.editProfile = function(userData) {;
@@ -16,11 +16,11 @@ angular.module('profilesModule')
                 .then(
                 function(data) {
                     credentialsService.setCurrentUser(userData['name'], userData['profileImageData']);
+                    notyService.success('profile edited');
                     $location.path('/view1');
                 },
                 function(error) {
-                    console.log(error);
-                    console.log('error editing profile');
+                    notyService.error('error editing profile');
                 });
         };
 
@@ -42,10 +42,9 @@ angular.module('profilesModule')
             };
 
             fileReader.onprogress = function(e) {
-                console.log(e);
             };
 
             fileReader.readAsDataURL(file);
         }
 
-    }]);
+    });

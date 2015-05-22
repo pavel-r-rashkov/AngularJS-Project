@@ -5,17 +5,17 @@ angular.module('friendsModule').directive('showFriendRequests', function () {
             requestsCount: '=requestsCount'
         },
         templateUrl: 'components/friends/views/friend-requests.html',
-        controller: function ($scope, $element, $attrs, friendsService) {
+        controller: function ($scope, friendsService, notyService) {
             $scope.approveRequest = function(requestId) {
                 friendsService.approveFriendRequest(requestId)
                     .then(
                     function () {
-                        console.log('request accepted');
                         $scope.requests = $scope.requests.filter(function(element) {return element.id !== requestId});
                         $scope.requestsCount.count -= 1;
+                        notyService.success('request accepted');
                     },
                     function (error) {
-                        console.log('error accepting request');
+                        notyService.error('error accepting request');
                     });
             };
 
@@ -23,12 +23,12 @@ angular.module('friendsModule').directive('showFriendRequests', function () {
                 friendsService.rejectFriendRequest(requestId)
                     .then(
                     function () {
-                        console.log('request rejected');
                         $scope.requests = $scope.requests.filter(function(element) {return element.id !== requestId});
                         $scope.requestsCount.count -= 1;
+                        notyService.success('request rejected');
                     },
                     function (error) {
-                        console.log('error rejecting request');
+                        notyService.error('error rejecting request');
                     });
             };
         }

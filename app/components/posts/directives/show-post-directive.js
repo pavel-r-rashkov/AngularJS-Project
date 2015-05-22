@@ -5,7 +5,7 @@ angular.module('postsModule').directive('showPost', function () {
             post: '='
         },
         templateUrl: 'components/posts/views/post.html',
-        controller: function ($scope, $element, $attrs, postsService, credentialsService) {
+        controller: function ($scope, postsService, credentialsService, notyService) {
             var currentUsername = credentialsService.getCurrentUser().username;
             $scope.showAddForm = false;
             $scope.showEditForm = false;
@@ -33,9 +33,10 @@ angular.module('postsModule').directive('showPost', function () {
                     .then(
                     function() {
                         $scope.posts = $scope.posts.filter(function(element) {return element.id !== postId;});
+                        notyService.success('post deleted');
                     },
-                    function() {
-                        console.log('error deleting post');
+                    function(error) {
+                        notyService.error('error deleting post');
                     });
             };
 
@@ -60,10 +61,9 @@ angular.module('postsModule').directive('showPost', function () {
                         $scope.post.comments = data['data'];
                     },
                     function() {
-                        console.log('error getting all comments');
+                        notyService.error('error getting all comments');
                     });
             };
-
         }
     };
 });

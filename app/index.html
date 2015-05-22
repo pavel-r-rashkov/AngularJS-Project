@@ -21,7 +21,7 @@
 </head>
 <body>
 
-  <div ng-include="'shared/navigation/views/navigation.html'">
+  <div ng-include="'components/navigation/views/navigation.html'">
 
   </div>
   <hr>
@@ -48,15 +48,14 @@
   <script src="app-module.js"></script>
 
   <script src="components/users/users-module.js"></script>
-  <script src="components/users/controllers/users-controller.js"></script>
+  <!--<script src="components/users/controllers/users-controller.js"></script>-->
   <script src="components/users/controllers/home-controller.js"></script>
   <script src="components/users/controllers/wall-controller.js"></script>
   <script src="components/users/services/users-service.js"></script>
   <script src="components/users/directives/user-preview-directive.js"></script>
-  <script src="components/users/directives/dynamic-scroll-directive.js"></script>
 
   <script src="components/posts/posts-module.js"></script>
-  <script src="components/posts/controllers/posts-controller.js"></script>
+  <!--<script src="components/posts/controllers/posts-controller.js"></script>-->
   <script src="components/posts/services/posts-service.js"></script>
   <script src="components/posts/directives/new-post-directive.js"></script>
   <script src="components/posts/directives/show-post-directive.js"></script>
@@ -68,8 +67,8 @@
   <script src="components/post-likes/directives/post-likes-directive.js"></script>
 
   <script src="components/comments/comments-module.js"></script>
-  <script src="components/comments/controllers/comments-controller.js"></script>
-  <script src="components/comments/controllers/comment-controller.js"></script>
+  <!--<script src="components/comments/controllers/comments-controller.js"></script>-->
+  <!--<script src="components/comments/controllers/comment-controller.js"></script>-->
   <script src="components/comments/services/comments-service.js"></script>
   <script src="components/comments/directives/show-comment-directive.js"></script>
   <script src="components/comments/directives/new-comment-directive.js"></script>
@@ -81,26 +80,29 @@
   <script src="components/comment-likes/directives/comment-likes-directive.js"></script>
 
   <script src="components/friends/friends-module.js"></script>
-  <script src="components/friends/controllers/friends-controller.js"></script>
+  <!--<script src="components/friends/controllers/friends-controller.js"></script>-->
   <script src="components/friends/controllers/friends-list-controller.js"></script>
   <script src="components/friends/services/friends-service.js"></script>
   <script src="components/friends/directives/friends-preview-directive.js"></script>
   <script src="components/friends/directives/friend-requests-directive.js"></script>
 
   <script src="components/profiles/profiles-module.js"></script>
-  <script src="components/profiles/controllers/profiles-controller.js"></script>
+  <!--<script src="components/profiles/controllers/profiles-controller.js"></script>-->
   <script src="components/profiles/controllers/change-password-controller.js"></script>
   <script src="components/profiles/controllers/edit-profile-controller.js"></script>
   <script src="components/profiles/controllers/news-feed-controller.js"></script>
   <script src="components/profiles/services/profiles-service.js"></script>
 
-  <script src="shared/navigation/controllers/navigation-controller.js"></script>
+  <script src="components/navigation/controllers/navigation-controller.js"></script>
+
+
   <script src="shared/filters/digit-gender-filter.js"></script>
   <script src="shared/filters/no-image-filter.js"></script>
   <script src="shared/services/credentials-service.js"></script>
   <script src="shared/services/noty-service.js"></script>
   <script src="shared/directives/users-results-directive.js"></script>
   <script src="shared/directives/likes-preview-directive.js"></script>
+  <script src="shared/directives/dynamic-scroll-directive.js"></script>
 
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>

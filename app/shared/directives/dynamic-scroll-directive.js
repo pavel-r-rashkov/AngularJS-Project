@@ -1,4 +1,4 @@
-angular.module('usersModule')
+angular.module('myApp')
     .directive("scroll", function ($window) {
         return {
             link: function (scope, element, attrs) {

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('commentLikesModule')
-    .controller('commentLikesDataController', ['$scope', 'commentLikesService', '$routeParams', function($scope, commentLikesService, $routeParams) {
+    .controller('commentLikesDataController', function($scope, commentLikesService, $routeParams, notyService) {
         var postId = $routeParams['postId'];
         var commentId = $routeParams['commentId'];
 
@@ -11,9 +11,9 @@ angular.module('commentLikesModule')
                 $scope.users = data['data'].map(
                     function(element) {
                         return element['user'];
+                    },
+                    function(error) {
+                        notyService.error('error loading comment likes info');
                     });
-            },
-            function(error) {
-                console.log('error getting comment likes data');
             });
-    }]);
+    });

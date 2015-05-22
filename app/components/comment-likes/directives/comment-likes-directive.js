@@ -5,7 +5,7 @@ angular.module('commentLikesModule').directive('showCommentLikes', function () {
             post: '=post'
         },
         templateUrl: 'components/comment-likes/views/comment-likes.html',
-        controller: function ($scope, $element, $attrs, commentLikesService, credentialsService) {
+        controller: function ($scope, commentLikesService, credentialsService, notyService) {
             $scope.showLikesPreview = false;
 
             var currentUsername = credentialsService.getCurrentUser().username;
@@ -22,7 +22,7 @@ angular.module('commentLikesModule').directive('showCommentLikes', function () {
                         $scope.comment.likesCount = data['data']['likesCount'];
                     },
                     function(error) {
-                        console.log('error liking comment');
+                        notyService.error('error liking comment');
                     });
             };
 
@@ -34,7 +34,7 @@ angular.module('commentLikesModule').directive('showCommentLikes', function () {
                         $scope.comment.likesCount = data['data']['likesCount'];
                     },
                     function() {
-                        console.log('error unlike comment');
+                        notyService.error('error unlike comment');
                     });
             };
 
@@ -48,7 +48,7 @@ angular.module('commentLikesModule').directive('showCommentLikes', function () {
                             });
                     },
                     function() {
-                        console.log('error loading likes preview');
+                        notyService.error('error loading likes preview');
                     });
             }
 

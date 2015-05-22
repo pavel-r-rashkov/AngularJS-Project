@@ -4,7 +4,7 @@ angular.module('postsModule').directive('editPost', function () {
             post: '=post'
         },
         templateUrl: 'components/posts/views/edit-post.html',
-        controller: function ($scope, $element, $attrs, postsService) {
+        controller: function ($scope, postsService, notyService) {
 
             $scope.editedPost = {
                 postContent: $scope.post.postContent
@@ -15,10 +15,10 @@ angular.module('postsModule').directive('editPost', function () {
                     .then(
                     function(data) {
                         $scope.post.postContent = data['data']['content'];
+                        notyService.success('post edited successfully');
                     },
                     function(error) {
-                        console.log(error);
-                        console.log('error editing post');
+                        notyService.error('error editing post');
                     });
             }
         }

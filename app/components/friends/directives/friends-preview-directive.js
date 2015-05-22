@@ -4,7 +4,7 @@ angular.module('friendsModule').directive('showFriendsPreview', function () {
             username: '=username'
         },
         templateUrl: 'components/friends/views/friends-preview.html',
-        controller: function ($scope, $element, $attrs, friendsService) {
+        controller: function ($scope, friendsService, notyService) {
             var username = $scope.username;
 
             if(username === localStorage['username']) {
@@ -15,7 +15,7 @@ angular.module('friendsModule').directive('showFriendsPreview', function () {
                         $scope.friends = data['data']['friends'];
                     },
                     function() {
-                        console.log('error getting friends preview');
+                        notyService.error('error getting friends preview');
                     });
             } else {
                 friendsService.getFriendsPreview(username)
@@ -25,7 +25,7 @@ angular.module('friendsModule').directive('showFriendsPreview', function () {
                         $scope.friends = data['data']['friends'];
                     },
                     function() {
-                        console.log('error getting friends preview');
+                        notyService.error('error getting friends preview');
                     });
             }
         }

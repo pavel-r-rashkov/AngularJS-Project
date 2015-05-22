@@ -1,14 +1,15 @@
 angular.module('usersModule')
-    .controller('homeController', ['$scope', 'usersService', 'credentialsService', '$location', function($scope, usersService, credentialsService, $location) {
+    .controller('homeController', function($scope, usersService, credentialsService, $location, notyService) {
         $scope.login = function(user) {
             usersService.login(user.username, user.password)
                 .then(
                 function(data) {
                     setLocalUserData(data);
-                    $location.path('/view1');
+                    $location.path('/' + user.username + '/wall');
+                    notyService.success('logged in');
                 },
                 function() {
-                    console.log('error logging in');
+                    notyService.error('error logging in');
                 });
         };
 
@@ -20,9 +21,10 @@ angular.module('usersModule')
                 function(data) {
                     setLocalUserData(data);
                     $location.path('/view1');
+                    notyService.success('successfully registered');
                 },
                 function() {
-                    console.log('error registering user');
+                    notyService.error('error registering user');
                 });
         };
 
@@ -40,4 +42,4 @@ angular.module('usersModule')
                     console.log('error getting user preview data');
                 });
         }
-    }]);
+    });

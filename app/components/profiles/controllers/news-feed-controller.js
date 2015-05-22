@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('profilesModule')
-    .controller('newsFeedController', ['$scope', 'profilesService', function($scope, profilesService) {
+    .controller('newsFeedController', function($scope, profilesService, notyService) {
         $scope.username = localStorage['username'];
         $scope.posts = [];
         $scope.lastPostId;
@@ -23,10 +23,10 @@ angular.module('profilesModule')
                 },
                 function () {
                     $scope.loadingPosts = false;
-                    console.log('error loading user\'s news feed');
+                    notyService.error('error loading user\'s news feed');
                 });
 
         };
 
         $scope.showPosts();
-    }]);
+    });

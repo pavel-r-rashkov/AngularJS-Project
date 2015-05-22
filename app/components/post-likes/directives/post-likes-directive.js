@@ -4,7 +4,7 @@ angular.module('postLikesModule').directive('showPostLikes', function () {
             post: '=post'
         },
         templateUrl: 'components/post-likes/views/post-likes.html',
-        controller: function ($scope, $element, $attrs, postLikesService, credentialsService) {
+        controller: function ($scope, postLikesService, credentialsService, notyService) {
             $scope.showLikesPreview = false;
             var currentUsername = credentialsService.getCurrentUser().username;
             $scope.canLike = (currentUsername === $scope.post.author.username) ||
@@ -20,7 +20,7 @@ angular.module('postLikesModule').directive('showPostLikes', function () {
                         $scope.post.likesCount = data['data']['likesCount'];
                     },
                     function(error) {
-                        console.log('error liking post');
+                        notyService.error('error liking post');
                     });
             };
 
@@ -32,7 +32,7 @@ angular.module('postLikesModule').directive('showPostLikes', function () {
                         $scope.post.likesCount = data['data']['likesCount'];
                     },
                     function() {
-                        console.log('error unliking post');
+                        notyService.error('error unliking post');
                     });
             };
 
@@ -46,7 +46,7 @@ angular.module('postLikesModule').directive('showPostLikes', function () {
                             });
                     },
                     function() {
-                        console.log('error loading likes preview');
+                        notyService.error('error loading likes preview');
                     });
             }
 

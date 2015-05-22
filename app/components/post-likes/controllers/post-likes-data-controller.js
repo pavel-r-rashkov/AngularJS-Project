@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('postLikesModule')
-    .controller('postLikesDataController', ['$scope', 'postLikesService', '$routeParams', function($scope, postLikesService, $routeParams) {
+    .controller('postLikesDataController', function($scope, postLikesService, $routeParams, notyService) {
         var postId = $routeParams['postId'];
 
         postLikesService.getPostDetailedLikes(postId)
@@ -13,6 +13,6 @@ angular.module('postLikesModule')
                     });
             },
             function(error) {
-                console.log('error getting post likes data');
+                notyService.error('error getting post likes data');
             });
-    }]);
+    });

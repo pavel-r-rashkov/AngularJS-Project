@@ -1,11 +1,11 @@
-angular.module('postsModule').directive('newPost', function (notyService) {
+angular.module('postsModule').directive('newPost', function () {
     return {
         scope: {
             posts: '=posts',
             wallOwner: '=wallOwner'
         },
         templateUrl: 'components/posts/views/new-post.html',
-        controller: function ($scope, $element, $attrs, postsService) {
+        controller: function ($scope, postsService, notyService) {
 
             $scope.author = localStorage['username'];
 
@@ -16,11 +16,10 @@ angular.module('postsModule').directive('newPost', function (notyService) {
                     function(data) {
                         $scope.posts.unshift(data['data']);
                         $scope.post.postContent = '';
-                        notyService.success('Post added');
+                        notyService.success('post added');
                     },
                     function(error) {
-                        console.log(error);
-                        console.log('error adding post');
+                        notyService.error('error adding post');
                     });
             }
         }

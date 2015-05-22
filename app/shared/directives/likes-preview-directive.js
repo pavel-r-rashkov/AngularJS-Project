@@ -4,7 +4,7 @@ angular.module('myApp').directive('showLikesPreview', function () {
             users: '=users'
         },
         templateUrl: 'shared/views/likes-preview.html',
-        controller: function ($scope, $element, $attrs) {
+        controller: function ($scope) {
 
         }
     };
