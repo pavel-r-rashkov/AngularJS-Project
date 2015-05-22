@@ -1,4 +1,4 @@
-angular.module('navigationModule', [])
+angular.module('navigationModule')
     .controller('navigationController', function($scope, friendsService, usersService, credentialsService, $location, notyService) {
         $scope.requestsActive = false;
         $scope.search = {};
