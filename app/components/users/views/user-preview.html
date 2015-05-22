@@ -2,5 +2,10 @@
     <p></p>
     <p>{{userData.name}}</p>
     <p>{{userData.gender | digitToGender}}</p>
-    <button ng-click="sendFriendRequest(userData.username)">Send friend request</button>
+    <div ng-switch="friendStatus">
+        <button ng-switch-when="notFriend" ng-click="sendFriendRequest(userData.username)">Send friend request</button>
+        <div ng-switch-when="friend">Friend</div>
+        <div ng-switch-when="pending">Pending</div>
+        <div ng-switch-default>...</div>
+    </div>
 </div>
