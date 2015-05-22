@@ -25,7 +25,7 @@ angular.module('commentsModule').directive('showComment', function () {
 
             $scope.toggleUserPreview = function() {
                 $scope.userPreviewActive = !$scope.userPreviewActive;
-            }
+            };
 
             $scope.toggleCommentEditForm = function() {
                 $scope.showCommentEditForm = !$scope.showCommentEditForm;

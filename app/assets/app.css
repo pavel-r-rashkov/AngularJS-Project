@@ -155,6 +155,7 @@ footer {
 }
 
 .post-content {
+  position: relative;
   padding: 10px;
   background-color: #F1F1F1;
   box-shadow: 5px 5px 5px #888888;
@@ -254,8 +255,8 @@ footer {
 
 .delete-button {
   position: absolute;
-  top: 65px;
-  right: 30px;
+  top: 5px;
+  right: 10px;
 }
 
 /*users*/

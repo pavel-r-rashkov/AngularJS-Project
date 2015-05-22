@@ -5,10 +5,19 @@ angular.module('postsModule').directive('showPost', function () {
             post: '='
         },
         templateUrl: 'components/posts/views/post.html',
-        controller: function ($scope, $element, $attrs, postsService) {
+        controller: function ($scope, $element, $attrs, postsService, credentialsService) {
+            var currentUsername = credentialsService.getCurrentUser().username;
             $scope.showAddForm = false;
             $scope.showEditForm = false;
             $scope.userPreviewActive = false;
+            $scope.canEditPost = currentUsername === $scope.post.author.username;
+            $scope.canDeletePost = (currentUsername === $scope.post.author.username) ||
+                $scope.post.wallOwner.username === currentUsername;
+            $scope.canLike = (currentUsername === $scope.post.author.username) ||
+                $scope.post.wallOwner.username === currentUsername ||
+                $scope.post.wallOwner.isFriend ||
+                $scope.post.author.isFriend;
+
             $scope.allCommentsShown = function() {
                 return $scope.post.totalCommentsCount == $scope.post.comments.length;
             };

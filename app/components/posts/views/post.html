@@ -16,9 +16,9 @@
         <div class="pull-right">{{post.date | date:'yyyy-MM-dd HH:mm'}}</div>
         <div class="clearfix"></div>
         <p>{{post.postContent}}</p>
-        <div show-post-likes post="post" class="likes pull-right"></div>
+        <div show-post-likes post="post" can-like="canLike" class="likes pull-right"></div>
 
-        <button type="button" class="close delete-button" data-dismiss="alert" aria-label="Close" ng-click="deletePost(post.id)">
+        <button ng-if="canDeletePost" type="button" class="close delete-button" data-dismiss="alert" aria-label="Close" ng-click="deletePost(post.id)">
             <span aria-hidden="true">&times;</span>
         </button>
 
@@ -27,7 +27,7 @@
             <span ng-show="!showAddForm">Add comment</span>
         </button>
 
-        <button ng-click="togglePostEditForm()" class="btn btn-orange">
+        <button ng-if="canEditPost" ng-click="togglePostEditForm()" class="btn btn-orange">
             <span ng-show="showEditForm">Hide form</span>
             <span ng-show="!showEditForm">Edit post</span>
         </button>

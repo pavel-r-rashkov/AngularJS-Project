@@ -1,7 +1,8 @@
 angular.module('postLikesModule').directive('showPostLikes', function () {
     return {
         scope: {
-            post: '=post'
+            post: '=post',
+            canLike: '=canLike'
         },
         templateUrl: 'components/post-likes/views/post-likes.html',
         controller: function ($scope, $element, $attrs, postLikesService) {

@@ -7,7 +7,7 @@ angular.module('postsModule')
                 return $http.get(baseUrl + '/' + postId, credentialsService.getConfig());
             },
             addPost: function(post) { // !!! api/posts - check service url
-                return $http.post(baseUrl, post, getConfig());
+                return $http.post(baseUrl, post, credentialsService.getConfig());
             },
             editPost: function(postId, post) {
                 return $http.put(baseUrl + '/' + postId, post, credentialsService.getConfig());
