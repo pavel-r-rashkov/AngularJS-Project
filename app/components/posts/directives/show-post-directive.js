@@ -20,7 +20,7 @@ angular.module('postsModule').directive('showPost', function () {
                 $scope.post.wallOwner.username === currentUsername;
 
             $scope.allCommentsShown = function() {
-                return $scope.post.totalCommentsCount == $scope.post.comments.length;
+                return $scope.post.totalCommentsCount === $scope.post.comments.length;
             };
 
             $scope.postTitle = $scope.post.author.name + ' posted';

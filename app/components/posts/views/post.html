@@ -32,7 +32,7 @@
             <span ng-show="!showEditForm">Edit post</span>
         </button>
 
-        <div ng-if="showAddForm" new-comment post-id="post.id" comments="post.comments" comments-count="post.totalCommentsCount" class="add-comment"></div>
+        <div ng-if="showAddForm" new-comment post="post" class="add-comment"></div>
         <div ng-if="showEditForm" edit-post post="post" class="edit-post"></div>
 
         <div>Comments count: {{post.totalCommentsCount}}</div>
