@@ -1,6 +1,6 @@
 angular.module('usersModule')
-    .factory('usersService', ['$http', 'credentialsService', function($http, credentialsService) {
-        var baseUrl = 'http://softuni-social-network.azurewebsites.net/api/users';
+    .factory('usersService', function($http, credentialsService, usersServiceBaseUrl) {
+        var baseUrl = usersServiceBaseUrl.baseUrl;
 
         var usersRepo = {
             login: function(username, password) {
@@ -40,4 +40,4 @@ angular.module('usersModule')
         };
 
         return usersRepo;
-    }]);
+    });

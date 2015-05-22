@@ -8,4 +8,7 @@ angular.module('friendsModule', [])
             templateUrl: 'components/friends/views/friends-list.html',
             controller: 'friendsListController'
         });
-    }]);
+    }])
+    .constant('friendsServiceBaseUrl', {
+        baseUrl: 'http://softuni-social-network.azurewebsites.net/api'
+    });

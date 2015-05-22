@@ -12,4 +12,7 @@ angular.module('profilesModule', [])
             templateUrl: 'components/profiles/views/news-feed.html',
             controller: 'newsFeedController'
         })
-    }]);
+    }])
+    .constant('profilesServiceBaseUrl', {
+        baseUrl: 'http://softuni-social-network.azurewebsites.net/api/me'
+    });

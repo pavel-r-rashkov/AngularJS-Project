@@ -1,6 +1,6 @@
 angular.module('friendsModule')
-    .factory('friendsService', ['$http', 'credentialsService', function($http, credentialsService) {
-        var baseUrl = 'http://softuni-social-network.azurewebsites.net/api';
+    .factory('friendsService', function($http, credentialsService, friendsServiceBaseUrl) {
+        var baseUrl = friendsServiceBaseUrl.baseUrl;
 
         var friendsRepo = {
             getFriends: function() {
@@ -30,4 +30,4 @@ angular.module('friendsModule')
         };
 
         return friendsRepo;
-    }]);
+    });

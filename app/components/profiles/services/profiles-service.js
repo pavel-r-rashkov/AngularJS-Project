@@ -1,6 +1,6 @@
 angular.module('profilesModule')
-    .factory('profilesService', ['$http', 'credentialsService', function($http, credentialsService) {
-        var baseUrl = 'http://softuni-social-network.azurewebsites.net/api/me';
+    .factory('profilesService', function($http, credentialsService, profilesServiceBaseUrl) {
+        var baseUrl = profilesServiceBaseUrl.baseUrl;
 
         var profilesRepo = {
             getMyData: function() {
@@ -18,4 +18,4 @@ angular.module('profilesModule')
         };
 
         return profilesRepo;
-    }]);
+    });

@@ -7,4 +7,7 @@ angular.module('postLikesModule', [])
             templateUrl: 'components/post-likes/views/post-likes-data.html',
             controller: 'postLikesDataController'
         });
-    }]);
+    }])
+    .constant('postLikesServiceBaseUrl', {
+        baseUrl: 'http://softuni-social-network.azurewebsites.net/api/Posts'
+    });

@@ -1,6 +1,6 @@
 angular.module('commentsModule')
-    .factory('commentsService', ['$http', 'credentialsService', function($http, credentialsService) {
-        var baseUrl = 'http://softuni-social-network.azurewebsites.net/api/posts';
+    .factory('commentsService', function($http, credentialsService, commentsServiceBaseUrl) {
+        var baseUrl = commentsServiceBaseUrl.baseUrl;
 
         var commentsRepo = {
             addComment: function(postId, comment) {
@@ -15,4 +15,4 @@ angular.module('commentsModule')
         };
 
         return commentsRepo;
-    }]);
+    });

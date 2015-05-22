@@ -16,4 +16,7 @@ angular.module('usersModule', [])
             templateUrl: 'components/users/views/wall.html',
             controller: 'wallController'
         })
-    }]);
+    }])
+    .constant('usersServiceBaseUrl', {
+        baseUrl: 'http://softuni-social-network.azurewebsites.net/api/users'
+    });

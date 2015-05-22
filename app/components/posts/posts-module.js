@@ -4,4 +4,7 @@ angular.module('postsModule', [])
             templateUrl: 'components/posts/views/view2.html',
             controller: 'postsController'
         });
-    }]);
+    }])
+    .constant('postsServiceBaseUrl', {
+        baseUrl: 'http://softuni-social-network.azurewebsites.net/api/Posts'
+    });

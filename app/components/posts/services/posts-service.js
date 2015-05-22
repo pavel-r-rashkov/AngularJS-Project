@@ -1,12 +1,12 @@
 angular.module('postsModule')
-    .factory('postsService', ['$http', 'credentialsService', function($http, credentialsService) {
-        var baseUrl = 'http://softuni-social-network.azurewebsites.net/api/Posts';
+    .factory('postsService', function($http, credentialsService, postsServiceBaseUrl) {
+        var baseUrl = postsServiceBaseUrl.baseUrl;
 
         var postsRepo = {
             getPostById: function(postId) {
                 return $http.get(baseUrl + '/' + postId, credentialsService.getConfig());
             },
-            addPost: function(post) { // !!! api/posts - check service url
+            addPost: function(post) {
                 return $http.post(baseUrl, post, credentialsService.getConfig());
             },
             editPost: function(postId, post) {
@@ -21,4 +21,4 @@ angular.module('postsModule')
         };
 
         return postsRepo;
-    }]);
+    });

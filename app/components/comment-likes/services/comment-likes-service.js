@@ -1,6 +1,6 @@
 angular.module('commentLikesModule')
-    .factory('commentLikesService', ['$http', 'credentialsService', function($http, credentialsService) {
-        var baseUrl = 'http://softuni-social-network.azurewebsites.net/api/posts';
+    .factory('commentLikesService', function($http, credentialsService, commentLikesBaseUrl) {
+        var baseUrl = commentLikesBaseUrl.baseUrl;
 
         var commentLikesRepo = {
             getCommentDetailedLikes: function(postId, commentId) {
@@ -18,4 +18,4 @@ angular.module('commentLikesModule')
         };
 
         return commentLikesRepo;
-    }]);
+    });
