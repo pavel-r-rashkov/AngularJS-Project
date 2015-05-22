@@ -1,4 +1,4 @@
-angular.module('postsModule').directive('newPost', function () {
+angular.module('postsModule').directive('newPost', function (notyService) {
     return {
         scope: {
             posts: '=posts',
@@ -16,6 +16,7 @@ angular.module('postsModule').directive('newPost', function () {
                     function(data) {
                         $scope.posts.unshift(data['data']);
                         $scope.post.postContent = '';
+                        notyService.success('Post added');
                     },
                     function(error) {
                         console.log(error);
