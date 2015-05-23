@@ -13,12 +13,12 @@ angular.module('myApp', [
     'navigationModule'
 ])
 .config(['$routeProvider', function($routeProvider) {
-    $routeProvider.otherwise({redirectTo: '/home'});
+    $routeProvider.otherwise({redirectTo: '/'});
 }])
 .run(function($rootScope, $location) {
     $rootScope.$on("$locationChangeStart", function(event) {
-        if((sessionStorage['sessionToken'] && $location.path() === '/home') ||
-            (!sessionStorage['sessionToken'] && $location.path() !== '/home')) {
+        if((sessionStorage['sessionToken'] && $location.path() === '/') ||
+            (!sessionStorage['sessionToken'] && ($location.path() !== '' && $location.path() !== '/'))) {
             event.preventDefault();
         }
     });

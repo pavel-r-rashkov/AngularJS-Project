@@ -9,37 +9,28 @@
   <title>My AngularJS App</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!--<link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">-->
-  <!--<link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">-->
-
-  <!--<link rel="stylesheet" href="bower_components/bootstrap-3.3.4-dist/css/bootstrap.css">-->
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" />
-
   <link rel="stylesheet" href="assets/app.css">
-
   <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body>
   <div class="page-wrap">
-    <div ng-include="'components/navigation/views/navigation.html'">
+    <div ng-include="'components/navigation/views/navigation.html'"></div>
 
-    </div>
     <!--[if lt IE 7]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <main ng-view class="container-full"></main>
+    <main ng-view class="container-full">
+
+    </main>
   </div>
-  <footer class="site-footer">
+  <footer class="site-footer"></footer>
 
-  </footer>
-
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
+  <!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>-->
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/noty/js/noty/packaged/jquery.noty.packaged.js"></script>

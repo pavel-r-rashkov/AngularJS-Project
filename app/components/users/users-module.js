@@ -1,7 +1,7 @@
 angular.module('usersModule', [])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider
-        .when('/home', {
+        .when('/', {
             templateUrl: 'components/users/views/home.html',
             controller: 'homeController'
         })

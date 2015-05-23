@@ -57,7 +57,7 @@ angular.module('navigationModule')
                 function() {
                     credentialsService.deleteCurrentUserData();
                     notyService.success('logged out');
-                    $location.path('/home');
+                    $location.path('/');
                 },
                 function(error) {
                     notyService.error('error logging out');
