@@ -63,4 +63,8 @@ angular.module('navigationModule')
                     notyService.error('error logging out');
                 });
         }
+
+        $scope.isActive = function(path) {
+            return $location.path() === path;
+        }
     });

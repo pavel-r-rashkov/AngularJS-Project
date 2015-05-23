@@ -5,12 +5,14 @@
     <form novalidate name="editProfileForm" class="profile-edit-form col-lg-8 col-lg-offset-2">
         <div class="form-group">
             <label for="name">Name</label><br>
-            <input id="name" ng-model="user.name" name="name" class="form-control"/>
+            <input id="name" ng-model="user.name" name="name" class="form-control" required/>
+            <span class="text-danger" ng-show="editProfileForm.name.$error.required">name is required</span>
         </div>
         <div class="form-group">
             <label for="email">Email</label><br>
-            <input type="email" id="email" ng-model="user.email" name="email" class="form-control"/>
-            <span ng-show="editProfileForm.email.$error.email">Valid email is required</span>
+            <input type="email" id="email" ng-model="user.email" name="email" class="form-control" required/>
+            <span class="text-danger" ng-show="editProfileForm.email.$error.email">valid email is required</span>
+            <span class="text-danger" ng-show="editProfileForm.email.$error.required">email is required</span>
         </div>
         <div class="form-group">
             <label>Gender</label><br>
@@ -38,7 +40,7 @@
             </div>
         </div>
         <div class="form-group">
-            <input type="submit" value="Save changes" ng-click="editProfile(user)" class="btn btn-default"/>
+            <input type="submit" ng-disabled="!editProfileForm.$valid" value="Save changes" ng-click="editProfile(user)" class="btn btn-default"/>
             <a ng-href="#/{{user.username}}/wall"><button class="btn btn-default">Cancel</button></a>
         </div>
     </form>

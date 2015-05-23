@@ -37,7 +37,6 @@
   width: 100%;
 }
 
-/*.........................*/
 html, body {
   height: 100%;
 }
@@ -56,11 +55,12 @@ html, body {
 .site-footer {
   background-color: #58585B;
 }
-/*...............................*/
-
-
 
 /*navigation*/
+
+.navbar, .navbar-default {
+  border-bottom: none;
+}
 
 .navbar-collapse {
   margin-top: 9px;
@@ -79,7 +79,7 @@ html, body {
 }
 
 .active-tab {
-  border-bottom: 2px solid #C65229;
+  border-bottom: 4px solid #C65229;
 }
 
 .navbar ul li a {
