@@ -109,6 +109,11 @@ html, body {
   padding: 5px;
 }
 
+.request-user-name {
+  width: 80px;
+  overflow: hidden;
+}
+
 .friend-request>div>a>div:nth-child(2) {
   margin-top: 5px;
 }
@@ -254,7 +259,11 @@ html, body {
 /*wall*/
 
 .wall-user-data {
-  height: 280px;
+  height: 295px;
+}
+
+.wall-gender {
+  padding: 0;
 }
 
 .wall-user-data>div{

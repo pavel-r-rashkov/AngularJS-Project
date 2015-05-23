@@ -6,11 +6,10 @@
             </div>
             <div class="wall-profile-names">
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <p>{{userFullData.name | uppercase}}</p>
                         <p>{{userFullData.username}}</p>
                     </div>
-                    <div class="col-lg-3"><img ng-src="{{userFullData.gender | digitToGender}}"></div>
                     <div ng-switch="friendStatus" class="col-lg-4">
                         <div class="col-lg-5">
                             <button ng-switch-when="notFriend" ng-click="sendFriendRequest(userFullData.username)" class="btn btn-green">
@@ -22,6 +21,7 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-3 wall-gender"><img ng-src="{{userFullData.gender | digitToGender}}"></div>
             </div>
             <div class="clearfix"></div>
         </div>
