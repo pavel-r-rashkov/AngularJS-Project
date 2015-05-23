@@ -5,7 +5,7 @@ angular.module('commentsModule').directive('showComment', function () {
             post: '=post'
         },
         templateUrl: 'components/comments/views/comment.html',
-        controller: function ($scope, $element, $attrs, commentsService, credentialsService) {
+        controller: function ($scope, commentsService, credentialsService, notyService) {
             var currentUsername = credentialsService.getCurrentUser().username;
             $scope.userPreviewActive = false;
             $scope.showCommentEditForm = false;
@@ -20,9 +20,10 @@ angular.module('commentsModule').directive('showComment', function () {
                     function() {
                         $scope.post.totalCommentsCount--;
                         $scope.post.comments = $scope.post.comments.filter(function(element) {return element.id !== commentId;});
+                        notyService.success('comment deleted');
                     },
                     function() {
-                        console.log('error deleting comment');
+                        notyService.error('error deleting comment');
                     });
             };
 

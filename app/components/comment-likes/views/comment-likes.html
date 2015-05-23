@@ -1,12 +1,16 @@
-<div>
-    <p>
-        <a ng-href="#/posts/{{post.id}}/comments/{{comment.id}}/likes" ng-mouseover="toggleLikesPreview()" ng-mouseleave="toggleLikesPreview()">
-            {{comment.likesCount}} liked this comment
-        </a>
-    </p>
-    <p ng-if="showLikesPreview" show-likes-preview users="likesUsersData" class="likes-preview"></p>
-    <div ng-if="canLike">
-        <button ng-if="!comment.liked" ng-click="likeComment(comment.id)">Like</button>
-        <button ng-if="comment.liked" ng-click="unlikeComment(comment.id)">Unlike</button>
-    </div>
+<div ng-if="canLike" class="pull-right">
+    <button ng-if="!comment.liked" ng-click="likeComment(comment.id)" class="btn btn-blue">
+        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Like
+    </button>
+    <button ng-if="comment.liked" ng-click="unlikeComment(comment.id)" class="btn btn-blue">
+        <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Unlike
+    </button>
 </div>
+<div class="pull-right">
+    <a ng-href="#/posts/{{post.id}}/comments/{{comment.id}}/likes" ng-mouseover="toggleLikesPreview()" ng-mouseleave="toggleLikesPreview()" class="likes-count">
+        {{comment.likesCount}} liked this comment
+        <div ng-if="showLikesPreview" show-likes-preview users="likesUsersData" class="likes-preview"></div>
+    </a>
+</div>
+
+

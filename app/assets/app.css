@@ -66,6 +66,15 @@ footer {
   padding-bottom: 5px;
 }
 
+.navbar .navbar-collapse ul li a {
+  color: #A9A9A9;
+}
+
+.navbar .navbar-collapse ul li a:hover,
+.navbar .navbar-collapse ul li a:focus{
+  color: #F1F1F1;
+}
+
 .nav-profile-image {
   position: relative;
   top: -4px;
@@ -162,19 +171,60 @@ footer {
   margin-bottom: 5px;
 }
 
-.edit-post {
+.edit-form {
   border: 2px solid #C65229;
 }
 
-.edit-post form {
+.edit-form form {
   height: 60px;
 }
 
-.edit-post button {
+.edit-form button {
   height: 100%;
 }
 
-.edit-post textarea {
+.edit-form textarea {
+  height: 100%;
+}
+
+.new-post {
+  margin-top: 25px;
+}
+
+.new-post-main {
+  background-color: #E9E9E9;
+  padding: 10px;
+}
+
+.new-post form {
+  border: 2px solid #93B244;
+  padding: 0px;
+  height: 120px;
+}
+
+.new-post textarea {
+  height: 100%;
+}
+
+.new-post .btn {
+  height: 100%;
+}
+
+.new-post-header {
+  padding: 5px;
+  height: 25px;
+  color: white;
+  background-color: #58585B;
+}
+
+/*wall*/
+
+.wall-user-data {
+  height: 250px;
+  margin-bottom: 25px;
+}
+
+.wall-user-data>div{
   height: 100%;
 }
 
@@ -263,8 +313,10 @@ footer {
 
 .user-preview {
   position: absolute;
-  top: 15px;
-  border: 1px solid #5E9AA2;
+  top: 40px;
+  border: 2px solid #5E9AA2;
+  padding: 5px;
+  width: 120px;
   background-color: #F1F1F1;
 }
 

@@ -5,9 +5,8 @@ angular.module('postsModule').directive('newPost', function () {
             wallOwner: '=wallOwner'
         },
         templateUrl: 'components/posts/views/new-post.html',
-        controller: function ($scope, postsService, notyService) {
-
-            $scope.author = localStorage['username'];
+        controller: function ($scope, postsService, notyService, credentialsService) {
+            $scope.author = credentialsService.getCurrentUser().name;
 
             $scope.addPost = function(post) {
                 post.username = $scope.wallOwner;

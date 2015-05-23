@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('friendsModule')
-    .controller('friendsListController', function($scope, friendsService, $routeParams, notyService) {
+    .controller('friendsListController', function($scope, friendsService, $routeParams, credentialsService) {
         var username = $routeParams['user'];
+        var currentUsername = credentialsService.getCurrentUser().username;
 
-        if(username === localStorage['username']) {
+        if(username === currentUsername) {
             friendsService.getFriends()
                 .then(
                 function(data) {
@@ -20,7 +21,7 @@ angular.module('friendsModule')
                     $scope.friends = data['data'];
                 },
                 function(error) {
-                    notyService.success('error getting friends list');
+                    notyService.error('error getting friends list');
                 });
         }
     });

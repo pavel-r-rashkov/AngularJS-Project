@@ -5,6 +5,21 @@ angular.module('usersModule')
         var username = $routeParams['username'];
         var lastPostId;
 
+        usersService.getUserData(username)
+            .then(
+            function(data) {
+                var currentUsername = credentialsService.getCurrentUser().username;
+                $scope.userFullData = data['data'];
+                $scope.friendStatus = data['data']['hasPendingRequest'] ? 'pending' : 'notFriend';
+                $scope.friendStatus = data['data']['isFriend'] ? 'friend' : $scope.friendStatus;
+                $scope.friendStatus = username === currentUsername ? '': $scope.friendStatus;
+                $scope.showFriendsPreview = data['data']['isFriend'] || (username === currentUsername);
+                $scope.showAddPost = data['data']['isFriend'] || (username === currentUsername);
+            },
+            function() {
+                console.log('error getting user full data');
+            });
+
         $scope.username = username;
         $scope.posts = [];
         $scope.loadingPosts = false;
@@ -41,21 +56,6 @@ angular.module('usersModule')
                     console.log('error sending friend request');
                 });
         };
-
-        usersService.getUserData(username)
-            .then(
-            function(data) {
-                var currentUsername = credentialsService.getCurrentUser().username;
-                $scope.userFullData = data['data'];
-                $scope.friendStatus = data['data']['hasPendingRequest'] ? 'pending' : 'notFriend';
-                $scope.friendStatus = data['data']['isFriend'] ? 'friend' : $scope.friendStatus;
-                $scope.friendStatus = username === currentUsername ? '': $scope.friendStatus;
-                $scope.showFriendsPreview = data['data']['isFriend'] || (username === currentUsername);
-                $scope.showAddPost = data['data']['isFriend'] || (username === currentUsername);
-            },
-            function() {
-                console.log('error getting user full data');
-            });
 
         $scope.showPosts();
     }]);

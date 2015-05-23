@@ -1,14 +1,25 @@
-<p ng-mouseover="toggleUserPreview()" ng-mouseleave="toggleUserPreview()">{{comment.authorUsername}}</p>
-<div ng-if="userPreviewActive"><div show-user-preview username="comment.authorUsername"></div></div>
-<p>{{comment.date | date:'yyyy-MM-dd HH:mm'}}</p>
+<div>
+    <div class="profile-image pull-left">
+        <a ng-href="#/{{comment.author.username}}/wall"><img ng-src="{{comment.author.profileImageData | noImage}}"></a>
+    </div>
+    <div ng-mouseenter="toggleUserPreview()" ng-mouseleave="toggleUserPreview()" class="user-name pull-left">
+        <span>{{comment.author.name}}</span><br>
+        <span>{{comment.author.username}}</span>
+        <div ng-if="userPreviewActive" class="user-preview" show-user-preview username="comment.author.username"></div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="pull-right">{{comment.date | date:'yyyy-MM-dd HH:mm'}}</div>
+<div class="clearfix"></div>
 <p>{{comment.commentContent}}</p>
-<div show-comment-likes comment="comment" post="post"></div>
-<button ng-if="canDeleteComment" ng-click="deleteComment(post.id, comment.id)">Delete comment</button>
 
-<button ng-if="canEditComment" ng-click="toggleCommentEditForm()">
+<div show-comment-likes comment="comment" post="post" class="likes pull-right"></div>
+<button ng-if="canDeleteComment" ng-click="deleteComment(post.id, comment.id)" data-dismiss="alert" aria-label="Close" class="close delete-button">
+    <span aria-hidden="true">&times;</span>
+</button>
+
+<button ng-if="canEditComment" ng-click="toggleCommentEditForm()" class="btn btn-orange">
     <span ng-show="showCommentEditForm">Hide form</span>
     <span ng-show="!showCommentEditForm">Edit comment</span>
 </button>
-<div ng-if="showCommentEditForm">
-    <div edit-comment comment="comment" post-id="post.id"></div>
-</div>
+<div ng-if="showCommentEditForm" edit-comment comment="comment" post-id="post.id" class="edit-form"></div>

@@ -1,4 +1,7 @@
 <form>
-    <textarea ng-model="editedComment.commentContent"></textarea>
-    <input type="submit" ng-click="editComment(editedComment)"/>
+    <textarea ng-model="editedComment.commentContent" class="col-lg-11"></textarea>
+    <button type="submit" ng-click="editComment(editedComment)" class="col-lg-1 btn btn-orange">
+        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+    </button>
+    <div class="clearfix"></div>
 </form>

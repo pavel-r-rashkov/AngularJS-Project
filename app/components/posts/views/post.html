@@ -3,9 +3,9 @@
     <div class="post-content">
         <div>
             <div class="profile-image pull-left">
-                <img ng-src="{{post.author.profileImageData}}">
+                <a ng-href="#/{{post.author.username}}/wall"><img ng-src="{{post.author.profileImageData | noImage}}"></a>
             </div>
-            <div ng-mouseover="toggleUserPreview()" ng-mouseleave="toggleUserPreview()" class="user-name pull-left">
+            <div ng-mouseenter="toggleUserPreview()" ng-mouseleave="toggleUserPreview()" class="user-name pull-left">
                 <span>{{post.author.name}}</span><br>
                 <span>{{post.author.username}}</span>
                 <div ng-if="userPreviewActive" class="user-preview" show-user-preview username="post.author.username"></div>
@@ -33,7 +33,7 @@
         </button>
 
         <div ng-if="showAddForm" new-comment post="post" class="add-comment"></div>
-        <div ng-if="showEditForm" edit-post post="post" class="edit-post"></div>
+        <div ng-if="showEditForm" edit-post post="post" class="edit-form"></div>
 
         <div>Comments count: {{post.totalCommentsCount}}</div>
     </div>

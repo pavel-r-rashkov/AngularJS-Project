@@ -5,8 +5,8 @@
         <p class="pull-right"><a ng-href="#/{{username}}/friends">Show all</a></p>
         <div class="clearfix"></div>
         <div ng-repeat="friend in friends" class="friends-preview-image col-lg-4">
-            <span>{{friend.username}}</span>
-            <img ng-src="{{friend.profileImageData | noImage}}">
+            <span>{{friend.name}}</span>
+            <a ng-href="#/{{friend.username}}/wall"><img ng-src="{{friend.profileImageData | noImage}}"></a>
         </div>
         <div class="clearfix"></div>
     </div>

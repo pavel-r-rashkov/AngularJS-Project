@@ -4,7 +4,6 @@ angular.module('myApp')
             link: function (scope, element, attrs) {
                 function handler() {
                     var elementPositionTop = this.pageYOffset + this.innerHeight - element[0].offsetTop;
-
                     if (elementPositionTop > parseInt(attrs['botOffset'])) {
                         scope[attrs['callback']]();
                     }
@@ -17,4 +16,4 @@ angular.module('myApp')
                 });
             }
         }
-});
+    });

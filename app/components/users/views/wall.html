@@ -1,30 +1,29 @@
-<h2>User wall {{username}}</h2>
-<div>
-    Cover:<img ng-src="data:image/jpeg;base64,{{userFullData.coverImageData}}"><br>
-    <img ng-src="data:image/jpeg;base64,{{userFullData.profileImageData}}">
-    <p>{{userFullData.name}}</p>
-    <p>{{userFullData.username}}</p>
-    <p>{{userFullData.gender | digitToGender}}</p>
-    <div ng-switch="friendStatus">
-        <button ng-switch-when="notFriend" ng-click="sendFriendRequest(userFullData.username)">Send friend request</button>
-        <div ng-switch-when="friend">Friend</div>
-        <div ng-switch-when="pending">Pending</div>
-        <div ng-switch-default>...</div>
+<div class="wall-user-data">
+    <div back-img="data:image/jpeg;base64,{{userFullData.coverImageData}}">
+        <img ng-src="data:image/jpeg;base64,{{userFullData.profileImageData}}">
+        <p>{{userFullData.name}}</p>
+        <p>{{userFullData.username}}</p>
+        <p>{{userFullData.gender | digitToGender}}</p>
+        <div ng-switch="friendStatus">
+            <button ng-switch-when="notFriend" ng-click="sendFriendRequest(userFullData.username)">Send friend request</button>
+            <div ng-switch-when="friend">Friend</div>
+            <div ng-switch-when="pending">Pending</div>
+            <div ng-switch-default>...</div>
+        </div>
     </div>
 </div>
-<hr>
-<hr>
-<div ng-repeat="post in posts">
-    <div show-post post="post" posts="posts"></div>
+<div class="row">
+    <section class="col-lg-8 col-lg-offset-1">
+        <div ng-repeat="post in posts" show-post post="post" posts="posts" class="post"></div>
+        <div class="loading-wrapper">
+            <div ng-show="loadingPosts">
+                <div class="loading"></div>
+            </div>
+        </div>
+        <div scroll callback="showPosts" bot-offset="10"></div>
+    </section>
+    <aside class="col-lg-3">
+        <div ng-if="showFriendsPreview" show-friends-preview username="username"></div>
+        <div ng-if="showAddPost" new-post posts="posts" wall-owner="username" class="new-post"></div>
+    </aside>
 </div>
-<div class="loading-wrapper">
-    <div ng-show="loadingPosts">
-            <div class="loading"></div>
-    </div>
-</div>
-<div ng-if="showAddPost" new-post posts="posts" wall-owner="username"></div>
-<div scroll callback="showPosts" bot-offset="10">
-    friends preview
-</div>
-<div ng-if="showFriendsPreview" show-friends-preview username="username"></div>
-
