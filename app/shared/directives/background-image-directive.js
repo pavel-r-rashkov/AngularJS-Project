@@ -8,8 +8,13 @@ angular.module('myApp')
                         'background-size': 'cover',
                         'background-repeat': 'no-repeat'
                     });
+                } else {
+                    element.css({
+                        'background-image': 'url(assets/images/default-cover.jpg)',
+                        'background-size': 'cover',
+                        'background-repeat': 'no-repeat'
+                    });
                 }
-
             });
         };
     });

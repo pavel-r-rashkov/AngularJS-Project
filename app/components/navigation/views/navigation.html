@@ -4,7 +4,7 @@
             <li ng-class="{ 'active-tab': isActive('/{{getCurrentUserData().username}}/wall')}">
                 <a ng-href="#/{{getCurrentUserData().username}}/wall">
                     <div class="nav-profile-image pull-left">
-                        <img ng-src="{{getCurrentUserData().profileImageData}}"/>
+                        <img ng-src="{{getCurrentUserData().profileImageData | noImage}}"/>
                     </div>
                     <div class="pull-right">
                         {{getCurrentUserData().name}}
