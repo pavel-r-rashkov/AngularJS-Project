@@ -1,19 +1,21 @@
 <div class="wall-user-data">
     <div back-img="data:image/jpeg;base64,{{userFullData.coverImageData}}">
-        <img ng-src="data:image/jpeg;base64,{{userFullData.profileImageData}}">
-        <p>{{userFullData.name}}</p>
-        <p>{{userFullData.username}}</p>
-        <p>{{userFullData.gender | digitToGender}}</p>
-        <div ng-switch="friendStatus">
-            <button ng-switch-when="notFriend" ng-click="sendFriendRequest(userFullData.username)">Send friend request</button>
-            <div ng-switch-when="friend">Friend</div>
-            <div ng-switch-when="pending">Pending</div>
-            <div ng-switch-default>...</div>
+        <div class="col-lg-4 col-lg-offset-2">
+            <img ng-src="data:image/jpeg;base64,{{userFullData.profileImageData}}">
+            <p>{{userFullData.name}}</p>
+            <p>{{userFullData.username}}</p>
+            <p>{{userFullData.gender | digitToGender}}</p>
+            <div ng-switch="friendStatus">
+                <button ng-switch-when="notFriend" ng-click="sendFriendRequest(userFullData.username)">Send friend request</button>
+                <div ng-switch-when="friend">Friend</div>
+                <div ng-switch-when="pending">Pending</div>
+                <div ng-switch-default>...</div>
+            </div>
         </div>
     </div>
 </div>
 <div class="row">
-    <section class="col-lg-8 col-lg-offset-1">
+    <section class="col-lg-6 col-lg-offset-2">
         <div ng-repeat="post in posts" show-post post="post" posts="posts" class="post"></div>
         <div class="loading-wrapper">
             <div ng-show="loadingPosts">

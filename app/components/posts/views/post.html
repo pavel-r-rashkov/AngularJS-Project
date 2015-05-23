@@ -43,7 +43,7 @@
     </div>
     <div class="clearfix"></div>
 
-    <div ng-show="!allCommentsShown()">
-        <button ng-click="toggleShowComments()">Show all comments</button>
-    </div>
+    <button ng-if="!allCommentsShown()" ng-click="toggleShowComments()" class="btn btn-blue show-comments">
+        <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+    </button>
 </div>

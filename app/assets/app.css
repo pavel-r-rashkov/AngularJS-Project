@@ -31,8 +31,10 @@
 
 /*layoout*/
 
-main {
-  margin-top: 40px;
+.container-full {
+  margin: 0 auto;
+  margin-top: 50px;
+  width: 100%;
 }
 
 footer {
@@ -154,6 +156,7 @@ footer {
 .post-main {
   background-color: #E9E9E9;
   padding: 10px;
+  position: relative;
 }
 
 .post-header {
@@ -301,6 +304,13 @@ footer {
   background-color: #EE652F;
   border: 2px solid #C65229;
   color: white;
+}
+
+.show-comments {
+  position: absolute;
+  bottom: 12px;
+  padding: 4px;
+  left: 10px;
 }
 
 .delete-button {
