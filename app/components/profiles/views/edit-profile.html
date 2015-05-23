@@ -26,14 +26,14 @@
                 <label>Profile picture</label>
                 <input type="file" onchange="angular.element(this).scope().setImageFile(this, 'profileImageData')">
                 <div class="profile-image-preview">
-                    <img ng-src="data:image/jpeg;base64,{{user.profileImageData}}" class="img-thumbnail">
+                    <img ng-src="{{user.profileImageData | noImage}}" class="img-thumbnail">
                 </div>
             </div>
             <div class="col-lg-6">
                 <label>Cover picture</label>
                 <input type="file" onchange="angular.element(this).scope().setImageFile(this, 'coverImageData')">
                 <div class="cover-image-preview">
-                    <img ng-src="data:image/jpeg;base64,{{user.coverImageData}}" class="img-thumbnail">
+                    <img ng-src="{{user.coverImageData | noImage}}" class="img-thumbnail">
                 </div>
             </div>
         </div>

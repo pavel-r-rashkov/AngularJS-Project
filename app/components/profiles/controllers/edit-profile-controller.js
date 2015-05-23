@@ -11,13 +11,14 @@ angular.module('profilesModule')
                 notyService.error('error loading user data');
             });
 
-        $scope.editProfile = function(userData) {;
+        $scope.editProfile = function(userData) {
             profilesService.editProfile(userData)
                 .then(
                 function(data) {
+                    var username = credentialsService.getCurrentUser().username;
                     credentialsService.setCurrentUser(userData['name'], userData['profileImageData']);
                     notyService.success('profile edited');
-                    $location.path('/view1');
+                    $location.path('/' + username + '/wall');
                 },
                 function(error) {
                     notyService.error('error editing profile');
@@ -27,7 +28,9 @@ angular.module('profilesModule')
         $scope.setImageFile = function(element, propertyName) {
             $scope.$apply(function($scope) {
                 var profileImageFile = element.files[0];
-                getBinaryData(profileImageFile, function(data) {$scope.user[propertyName] = data;});
+                getBinaryData(profileImageFile, function(data) {
+                    $scope.user[propertyName] = 'data:image/jpeg;base64,' + data;
+                });
             });
         };
 
@@ -39,9 +42,6 @@ angular.module('profilesModule')
                 $scope.$apply(function () {
                     onLoadCallback(tokens[1]);
                 });
-            };
-
-            fileReader.onprogress = function(e) {
             };
 
             fileReader.readAsDataURL(file);
