@@ -1,5 +1,7 @@
 angular.module('usersModule')
     .controller('homeController', function($scope, usersService, credentialsService, $location, notyService) {
+        $scope.newUser = {};
+
         $scope.login = function(user) {
             usersService.login(user.username, user.password)
                 .then(
@@ -12,8 +14,6 @@ angular.module('usersModule')
                     notyService.error('error logging in');
                 });
         };
-
-        $scope.newUser = {};
 
         $scope.register = function(user) {
             usersService.register(user.username, user.password, user.confirmPassword, user.name, user.email)

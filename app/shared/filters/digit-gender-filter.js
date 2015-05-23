@@ -3,13 +3,13 @@ angular.module('myApp').filter('digitToGender', function() {
         var gender;
         switch(digit) {
             case 0:
-                gender = 'Other'; break;
+                gender = 'assets/images/other.png'; break;
             case 1:
-                gender = 'Male'; break;
+                gender = 'assets/images/male.png'; break;
             case 2:
-                gender = 'Female'; break;
+                gender = 'assets/images/female.png'; break;
             default:
-                gender = 'No gender info';
+                gender = '';
         }
 
         return gender;

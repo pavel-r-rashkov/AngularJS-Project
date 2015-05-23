@@ -44,8 +44,9 @@
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label><br>
-                    <input id="email" ng-model="newUser.email" name="email" required="" class="form-control"/>
+                    <input type="email" id="email" ng-model="newUser.email" name="email" required="" class="form-control"/>
                     <span class="text-danger" ng-show="registrationForm.email.$error.required">email is required</span>
+                    <span class="text-danger" ng-show="registrationForm.email.$error.email">email is not valid</span>
                 </div>
                 <div class="form-group">
                     <label>Gender</label><br>

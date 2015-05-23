@@ -406,8 +406,7 @@ html, body {
 /*common */
 
 .users-result {
-  border: 1px solid black;
-  padding: 0px;
+  padding: 3px;
 }
 
 .users-result>div:nth-child(2) {
@@ -415,7 +414,7 @@ html, body {
 }
 
 .users-results-wrapper {
-
+  margin-bottom: 25px;
 }
 
 .users-results-image {

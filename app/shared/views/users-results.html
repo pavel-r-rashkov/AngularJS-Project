@@ -1,31 +1,42 @@
 <form class="form-inline">
-    <div class="form-group users-list">
+    <div class="form-group col-lg-3">
         <label for="name">Name</label>
         <input ng-model="usersFilter.name" id="name" class="form-control"/>
     </div>
-    <div class="form-group">
+    <div class="form-group col-lg-3">
         <label for="username">Username</label>
         <input ng-model="usersFilter.username" id="username" class="form-control"/>
     </div>
-    <div class="form-group">
+    <div class="form-group col-lg-3">
         <label for="gender">Gender</label>
         <select ng-model="usersFilter.gender" id="gender" class="form-control">
-            <option value="" selected></option>
+            <option value="" selected>All</option>
             <option value="1">Male</option>
             <option value="2">Female</option>
             <option value="0">Other</option>
         </select>
     </div>
+    <div class="form-group col-lg-3">
+        <label for="order">Order by</label>
+        <select ng-model="sortOrder" id="order" class="form-control">
+            <option value="" selected>Unsorted</option>
+            <option value="username">Username</option>
+            <option value="name">Name</option>
+            <option value="gender">Gender</option>
+        </select>
+    </div>
 </form>
 <div class="users-results-wrapper">
-    <div ng-repeat="user in users | filter:usersFilter" class="col-lg-6 users-result">
-        <div class="users-results-image pull-left"><img ng-src="{{user.profileImageData}}"></div>
-        <div class="pull-left">
-            <div>{{user.name}}</div>
-            <div>{{user.username}}</div>
-        </div>
-        <div class="pull-right">{{user.gender | digitToGender}}</div>
-        <div class="clearfix"></div>
+    <div ng-repeat="user in users | filter:usersFilter | orderBy:sortOrder" class="col-lg-6 users-result">
+        <a ng-href="#/{{user.username}}/wall">
+            <div class="users-results-image pull-left"><img ng-src="{{user.profileImageData | noImage}}"></div>
+            <div class="pull-left">
+                <div>{{user.name}}</div>
+                <div>{{user.username}}</div>
+            </div>
+            <div class="pull-right"><img ng-src="{{user.gender | digitToGender}}"></div>
+            <div class="clearfix"></div>
+        </a>
     </div>
     <div class="clearfix"></div>
 </div>
