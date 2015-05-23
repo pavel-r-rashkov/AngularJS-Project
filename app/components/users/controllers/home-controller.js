@@ -23,8 +23,8 @@ angular.module('usersModule')
                     $location.path('/' + user.username + '/wall');
                     notyService.success('successfully registered');
                 },
-                function() {
-                    notyService.error('error registering user');
+                function(error) {
+                    notyService.error(error['data']['modelState'][''][0]);
                 });
         };
 
