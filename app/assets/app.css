@@ -108,8 +108,13 @@ html, body {
   padding: 5px;
 }
 
-.friend-request>div>div:nth-child(2) {
+.friend-request>div>a>div:nth-child(2) {
   margin-top: 5px;
+}
+
+.navbar .navbar-collapse .request-user:hover,
+.navbar .navbar-collapse .request-user:focus {
+  color: black;
 }
 
 .friend-request .btn {
@@ -350,7 +355,7 @@ html, body {
   top: 40px;
   border: 2px solid #5E9AA2;
   padding: 5px;
-  width: 120px;
+  width: 170px;
   background-color: #F1F1F1;
 }
 
@@ -459,4 +464,22 @@ html, body {
 
 @keyframes play {
   100% { background-position: -312px; }
+}
+
+/*edit profile*/
+
+.profile-image-preview {
+  width: 160px;
+  height: 160px;
+}
+
+.profile-image-preview img {
+  height: 160px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.cover-image-preview {
+  width: 160px;
+  height: 160px;
 }

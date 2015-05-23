@@ -6,7 +6,11 @@ angular.module('postsModule').directive('newPost', function () {
         },
         templateUrl: 'components/posts/views/new-post.html',
         controller: function ($scope, postsService, notyService, credentialsService) {
-            $scope.author = credentialsService.getCurrentUser().name;
+            var currentUser = credentialsService.getCurrentUser();
+            $scope.author = {
+                name: currentUser.name,
+                username: currentUser.username
+            };
 
             $scope.addPost = function(post) {
                 post.username = $scope.wallOwner;

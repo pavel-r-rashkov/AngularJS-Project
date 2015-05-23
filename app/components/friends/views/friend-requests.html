@@ -1,9 +1,11 @@
 <div ng-repeat="request in requests" class="friend-request">
     <div>
-        <div class="nav-profile-image pull-left">
-            <img ng-src="{{request.user.profileImageData}}">
-        </div>
-        <div class="pull-left">{{request.user.username}}</div>
+        <a ng-href="#/{{request.user.username}}/wall" class="request-user">
+            <div class="nav-profile-image pull-left">
+                <img ng-src="{{request.user.profileImageData | noImage}}">
+            </div>
+            <div class="pull-left">{{request.user.name}}</div>
+        </a>
         <div class="pull-right">
             <button ng-click="approveRequest(request.id)" class="btn btn-green">
                 <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>

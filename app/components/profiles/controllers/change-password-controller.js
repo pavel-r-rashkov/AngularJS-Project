@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('profilesModule')
-    .controller('changePasswordController', function($scope, profilesService, $location, notyService) {
+    .controller('changePasswordController', function($scope, profilesService, $location, notyService, credentialsService) {
+        $scope.username = credentialsService.getCurrentUser().username;
+
         $scope.changePassword = function(passwordData) {
             profilesService.changePassword(passwordData)
                 .then(

@@ -1,11 +1,16 @@
 <div>
-    <p></p>
-    <p>{{userData.name}}</p>
-    <p>{{userData.gender | digitToGender}}</p>
+    <a ng-href="#/{{userData.username}}/wall">
+        <div class="pull-left">
+            <div>{{userData.name}}</div>
+            <div>{{userData.username}}</div>
+        </div>
+        <div class="pull-right"><img ng-src="{{userData.gender | digitToGender}}"></div>
+        <div class="clearfix"></div>
+    </a>
     <div ng-switch="friendStatus">
-        <button ng-switch-when="notFriend" ng-click="sendFriendRequest(userData.username)">Send friend request</button>
-        <div ng-switch-when="friend">Friend</div>
-        <div ng-switch-when="pending">Pending</div>
-        <div ng-switch-default>...</div>
+        <button ng-switch-when="notFriend" class="btn btn-green" ng-click="sendFriendRequest(userData.username)">Send friend request</button>
+        <div ng-switch-when="friend" class="btn btn-blue">Friend</div>
+        <div ng-switch-when="pending" class="btn btn-orange">Pending request</div>
+        <div ng-switch-default></div>
     </div>
 </div>
