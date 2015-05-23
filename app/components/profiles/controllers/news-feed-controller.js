@@ -3,7 +3,7 @@
 angular.module('profilesModule')
     .controller('newsFeedController', function($scope, profilesService, notyService, credentialsService) {
         $scope.username = credentialsService.getCurrentUser().username;
-        $scope.posts = [];
+        $scope.feedData = {posts: []};
         $scope.lastPostId;
         $scope.loadingPosts = false;
 
@@ -15,7 +15,7 @@ angular.module('profilesModule')
             $scope.loadingPosts = true;
             profilesService.getNewsFeed(startPostId, 5)
                 .then(function (data) {
-                    $scope.posts.push.apply($scope.posts, data['data']);
+                    $scope.feedData.posts.push.apply($scope.feedData.posts, data['data']);
                     if(data['data'].length > 0) {
                         $scope.lastPostId = data['data'][data['data'].length - 1].id;
                     }

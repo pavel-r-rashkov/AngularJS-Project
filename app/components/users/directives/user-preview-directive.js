@@ -16,7 +16,6 @@ angular.module('usersModule').directive('showUserPreview', function () {
                     $scope.friendStatus = $scope.username === currentUsername ? '': $scope.friendStatus;
                 },
                 function(error) {
-                    notyService.error('error getting user preview data');
                 });
 
             $scope.sendFriendRequest = function(username) {

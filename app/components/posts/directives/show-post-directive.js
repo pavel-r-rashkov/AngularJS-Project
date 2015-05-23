@@ -1,8 +1,8 @@
 angular.module('postsModule').directive('showPost', function () {
     return {
         scope: {
-            posts: '=',
-            post: '='
+            posts: '=posts',
+            post: '=post'
         },
         templateUrl: 'components/posts/views/post.html',
         controller: function ($scope, postsService, credentialsService, notyService) {
@@ -32,7 +32,7 @@ angular.module('postsModule').directive('showPost', function () {
                 postsService.deletePost(postId)
                     .then(
                     function() {
-                        $scope.posts = $scope.posts.filter(function(element) {return element.id !== postId;});
+                        $scope.posts.posts = $scope.posts.posts.filter(function(element) {return element.id !== postId;});
                         notyService.success('post deleted');
                     },
                     function(error) {

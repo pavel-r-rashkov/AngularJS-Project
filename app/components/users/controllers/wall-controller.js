@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('usersModule')
-    .controller('wallController', ['$scope', 'usersService', '$routeParams', 'friendsService', 'credentialsService', function($scope, usersService, $routeParams, friendsService, credentialsService) {
+    .controller('wallController', function($scope, usersService, $routeParams, friendsService, credentialsService, notyService) {
         var username = $routeParams['username'];
         var lastPostId;
 
@@ -16,12 +16,11 @@ angular.module('usersModule')
                 $scope.showFriendsPreview = data['data']['isFriend'] || (username === currentUsername);
                 $scope.showAddPost = data['data']['isFriend'] || (username === currentUsername);
             },
-            function() {
-                console.log('error getting user full data');
+            function(error) {
             });
 
         $scope.username = username;
-        $scope.posts = [];
+        $scope.wallData = {posts: []};
         $scope.loadingPosts = false;
 
         $scope.showPosts = function() {
@@ -34,15 +33,14 @@ angular.module('usersModule')
             usersService.getWall($routeParams['username'], startPostId, 5)
                 .then(
                 function(data) {
-                    $scope.posts.push.apply($scope.posts, data['data']);
+                    $scope.wallData.posts.push.apply($scope.wallData.posts, data['data']);
                     if(data['data'].length > 0) {
                         lastPostId = data['data'][data['data'].length - 1].id;
                     }
                     $scope.loadingPosts = false;
                 },
-                function() {
+                function(error) {
                     $scope.loadingPosts = false;
-                    console.log('error getting wall data');
                 });
         };
 
@@ -50,12 +48,12 @@ angular.module('usersModule')
             friendsService.sendFriendRequest(username)
                 .then(
                 function(data) {
-                    console.log('request sent');
+                    notyService.success('request sent');
                 },
                 function() {
-                    console.log('error sending friend request');
+                    notyService.error('error sending friend request');
                 });
         };
 
         $scope.showPosts();
-    }]);
+    });
