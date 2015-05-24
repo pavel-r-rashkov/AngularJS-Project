@@ -137,6 +137,31 @@ html, body {
   top: 0px;
 }
 
+.users-search {
+
+}
+
+@media (min-width: 768px) {
+  #navigation-container {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 992px) {
+  #navigation-container {
+    font-size: 14px;
+  }
+}
+
+.navbar-collapse {
+  width: 100%;
+  padding: 0px;
+}
+
+.container {
+  margin: 0px;
+}
+
 .users-search-results>div {
   padding: 5px;
 }
@@ -227,7 +252,7 @@ html, body {
 }
 
 .new-post {
-  margin-top: 25px;
+  margin: 25px 0px;
 }
 
 .new-post-main {
@@ -325,6 +350,7 @@ html, body {
 }
 
 .likes-count {
+  white-space: nowrap;
   position: relative;
   margin: 0px 15px;
   top: 6px;
@@ -414,6 +440,7 @@ html, body {
 .friends-preview-main {
   background-color: #E9E9E9;
   padding: 10px;
+  margin-bottom: 15px;
 }
 
 .friends-preview-header {

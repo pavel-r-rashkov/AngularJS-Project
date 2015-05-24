@@ -17,7 +17,7 @@
         <div class="clearfix"></div>
         <p>{{post.postContent}}</p>
         <div show-post-likes post="post" class="likes pull-right"></div>
-
+        <div class="clearfix"></div>
         <button ng-if="canDeletePost" type="button" class="close delete-button" data-dismiss="alert" aria-label="Close" ng-click="deletePost(post.id)">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -39,7 +39,7 @@
     </div>
 
     <div ng-repeat="comment in post.comments" show-comment comment="comment" post="post"
-         class="comment col-lg-11 pull-right">
+         class="comment col-sm-11 col-xs-12 pull-right">
     </div>
     <div class="clearfix"></div>
 

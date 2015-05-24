@@ -24,14 +24,14 @@
             <input id="other" type="radio" name="gender" ng-model="user.gender" value="0"/><br>
         </div>
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-sm-6 col-xs-12">
                 <label>Profile picture</label>
                 <input type="file" onchange="angular.element(this).scope().setImageFile(this, 'profileImageData')">
                 <div class="profile-image-preview">
                     <img ng-src="{{user.profileImageData | noImage}}" class="img-thumbnail">
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-sm-6 col-xs-12">
                 <label>Cover picture</label>
                 <input type="file" onchange="angular.element(this).scope().setImageFile(this, 'coverImageData')">
                 <div class="cover-image-preview">

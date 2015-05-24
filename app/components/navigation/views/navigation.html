@@ -1,42 +1,49 @@
 <nav ng-controller="navigationController" class="navbar navbar-default navbar-fixed-top">
-    <div class="collapse navbar-collapse">
-        <ul ng-if="getLoggedIn()" class="nav navbar-nav">
-            <li ng-class="{ 'active-tab': isActive('/{{getCurrentUserData().username}}/wall')}">
-                <a ng-href="#/{{getCurrentUserData().username}}/wall">
-                    <div class="nav-profile-image pull-left">
-                        <img ng-src="{{getCurrentUserData().profileImageData | noImage}}"/>
-                    </div>
-                    <div class="pull-right">
-                        {{getCurrentUserData().name}}
-                    </div>
-                    <div class="clearfix"></div>
-                </a>
-            </li>
-            <li ng-class="{ 'active-tab': isActive('/profile/feed')}">
-                <a ng-href="#/profile/feed">news feed</a></li>
-            <li>
-                <a ng-click="toggleRequests()">requests <span class="badge">{{requestsCount.count}}</span></a>
-                <div ng-if="requestsActive" class="friend-requests">
-                    <div show-friend-requests requests="requests" requests-count="requestsCount"></div>
-                </div>
-            </li>
-            <li ng-class="{ 'active-tab': isActive('/profile/edit')}"><a ng-href="#/profile/edit">edit profile</a></li>
-            <li ng-class="{ 'active-tab': isActive('/profile/changepassword')}">
-                <a ng-href="#/profile/changepassword">change password</a>
-            </li>
-            <li><a ng-click="logout()">logout</a></li>
-            <li>
-                <input ng-model="search.searchTerm" ng-change="loadUsers()" placeholder="Search..." class="users-search"/>
-                <div ng-show="users.length > 0" class="users-search-results">
-                    <div ng-repeat="user in users">
+    <div class="container" id="navigation-container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul ng-if="getLoggedIn()" class="nav navbar-nav">
+                <li ng-class="{ 'active-tab': isActive('/{{getCurrentUserData().username}}/wall')}">
+                    <a ng-href="#/{{getCurrentUserData().username}}/wall">
                         <div class="nav-profile-image pull-left">
-                            <img ng-src="{{user.profileImageData}}">
+                            <img ng-src="{{getCurrentUserData().profileImageData | noImage}}"/>
                         </div>
-                        <a ng-href="#/{{user.username}}/wall" class="pull-left">{{user.name}}</a>
+                        <div class="pull-right">
+                            {{getCurrentUserData().name}}
+                        </div>
                         <div class="clearfix"></div>
+                    </a>
+                </li>
+                <li ng-class="{ 'active-tab': isActive('/profile/feed')}">
+                    <a ng-href="#/profile/feed">news feed</a></li>
+                <li>
+                    <a ng-click="toggleRequests()">requests <span class="badge">{{requestsCount.count}}</span></a>
+                    <div ng-if="requestsActive" class="friend-requests">
+                        <div show-friend-requests requests="requests" requests-count="requestsCount"></div>
                     </div>
-                </div>
-            </li>
-        </ul>
+                </li>
+                <li ng-class="{ 'active-tab': isActive('/profile/edit')}"><a ng-href="#/profile/edit">edit profile</a></li>
+                <li ng-class="{ 'active-tab': isActive('/profile/changepassword')}">
+                    <a ng-href="#/profile/changepassword">change</a>
+                </li>
+                <li><a ng-click="logout()">logout</a></li>
+                <li>
+                    <input ng-model="search.searchTerm" ng-change="loadUsers()" placeholder="Search..." class="users-search"/>
+                    <div ng-show="users.length > 0" class="users-search-results">
+                        <div ng-repeat="user in users">
+                            <div class="nav-profile-image pull-left">
+                                <img ng-src="{{user.profileImageData}}">
+                            </div>
+                            <a ng-href="#/{{user.username}}/wall" class="pull-left">{{user.name}}</a>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>

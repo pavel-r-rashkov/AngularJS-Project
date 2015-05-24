@@ -14,6 +14,7 @@
 <p>{{comment.commentContent}}</p>
 
 <div show-comment-likes comment="comment" post="post" class="likes pull-right"></div>
+<div class="clearfix"></div>
 <button ng-if="canDeleteComment" ng-click="deleteComment(post.id, comment.id)" data-dismiss="alert" aria-label="Close" class="close delete-button">
     <span aria-hidden="true">&times;</span>
 </button>
