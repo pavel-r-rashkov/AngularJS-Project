@@ -4,6 +4,7 @@ angular.module('usersModule')
     .controller('wallController', function($scope, usersService, $routeParams, friendsService, credentialsService, notyService) {
         var username = $routeParams['username'];
         var lastPostId;
+        $scope.friendStatus = '';
 
         usersService.getUserData(username)
             .then(
@@ -12,7 +13,8 @@ angular.module('usersModule')
                 $scope.userFullData = data['data'];
                 $scope.friendStatus = data['data']['hasPendingRequest'] ? 'pending' : 'notFriend';
                 $scope.friendStatus = data['data']['isFriend'] ? 'friend' : $scope.friendStatus;
-                $scope.friendStatus = data['data']['username'] === currentUsername ? '': $scope.friendStatus;
+                $scope.friendStatus = data['data']['username'] == currentUsername ? '': $scope.friendStatus;
+
                 $scope.showFriendsPreview = data['data']['isFriend'] || (username === currentUsername);
                 $scope.showAddPost = data['data']['isFriend'] || (username === currentUsername);
             },

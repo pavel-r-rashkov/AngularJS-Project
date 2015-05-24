@@ -16,7 +16,7 @@ angular.module('friendsModule').directive('showFriendsPreview', function () {
                         $scope.friends = data['data']['friends'];
                     },
                     function() {
-                        notyService.error('error getting friends preview');
+                        conole.log('error getting friends preview');
                     });
             } else {
                 friendsService.getFriendsPreview(username)
@@ -26,7 +26,7 @@ angular.module('friendsModule').directive('showFriendsPreview', function () {
                         $scope.friends = data['data']['friends'];
                     },
                     function() {
-                        notyService.error('error getting friends preview');
+                        console.log('error getting friends preview');
                     });
             }
         }
